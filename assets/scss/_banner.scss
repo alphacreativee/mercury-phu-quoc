@@ -27,5 +27,73 @@
     border-radius: 4px;
     background-color: var(--color-cream);
     z-index: 3;
+    display: flex;
+    overflow: hidden;
+    form {
+      display: flex;
+      > * {
+        color: var(--color-primary);
+      }
+      .people,
+      .child {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        padding-left: 35px;
+        .select {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
+      }
+      .child {
+        position: relative;
+        &::before {
+          content: "";
+          position: absolute;
+          left: 15px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 1px;
+          height: 13px;
+          background-color: var(--color-primary);
+        }
+      }
+      button {
+        background-color: var(--color-secondary);
+        width: 150px;
+        margin-left: 26px;
+        color: var(--color-white);
+      }
+      .check-in,
+      .check-out {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 1px;
+          height: 13px;
+          background-color: var(--color-primary);
+        }
+      }
+      input {
+        border: none;
+        box-shadow: none;
+        outline: none;
+        text-align: center;
+        &::placeholder {
+          color: var(--color-primary);
+          font-size: 16px;
+          line-height: 24px;
+        }
+      }
+    }
   }
 }

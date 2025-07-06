@@ -78,6 +78,7 @@ function customDropdown() {
 // booking
 function bookingForm() {
   if (!document.querySelector(".banner-booking")) return;
+
   var lightPick = new Lightpick({
     field: document.getElementById("check-in"),
     secondField: document.getElementById("check-out"),
@@ -97,6 +98,26 @@ function bookingForm() {
         calendar.style.left = rect.left + window.scrollX + "px";
       }
     },
+  });
+
+  // Counter functionality
+  document.querySelectorAll(".people, .child").forEach((section) => {
+    const minus = section.querySelector(".min");
+    const plus = section.querySelector(".plus");
+    const val = section.querySelector(".val");
+
+    plus.onclick = () => {
+      const current = parseInt(val.textContent);
+      val.textContent = Math.min(current + 1, 10);
+      minus.style.opacity = val.textContent > 0 ? "1" : "0.5";
+    };
+
+    minus.onclick = () => {
+      const current = parseInt(val.textContent);
+      const newVal = Math.max(current - 1, 0);
+      val.textContent = newVal;
+      minus.style.opacity = newVal > 0 ? "1" : "0.5";
+    };
   });
 }
 // end booking
