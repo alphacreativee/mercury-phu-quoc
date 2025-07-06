@@ -75,9 +75,35 @@ function customDropdown() {
   }
 }
 // end dropdown
+// booking
+function bookingForm() {
+  if (!document.querySelector(".banner-booking")) return;
+  var lightPick = new Lightpick({
+    field: document.getElementById("check-in"),
+    secondField: document.getElementById("check-out"),
+    singleDate: false,
+    minDate: moment().startOf("now"),
+    numberOfMonths: 2,
+    onOpen: function () {
+      var input = lightPick._opts.field;
+      var rect = input.getBoundingClientRect();
+      var calendar = lightPick.el;
+      if (rect.top >= window.innerHeight / 2) {
+        calendar.style.top =
+          rect.top + window.scrollY - calendar.offsetHeight + "px";
+        calendar.style.left = rect.left + window.scrollX + "px";
+      } else {
+        calendar.style.top = rect.bottom + window.scrollY + "px";
+        calendar.style.left = rect.left + window.scrollX + "px";
+      }
+    },
+  });
+}
+// end booking
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
+  bookingForm();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body

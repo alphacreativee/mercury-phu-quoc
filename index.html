@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="./assets/libs/bootstrap.min.css" />
     <link rel="stylesheet" href="./assets/libs/lenis.css" />
     <link rel="stylesheet" href="./assets/libs/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./assets/libs/lightpick.min.css" />
     <!-- end meta -->
     <!-- link custom css page -->
     <link rel="stylesheet" href="./assets/fonts/Futura/font.css" />
@@ -52,7 +53,33 @@
     <header id="header"></header>
     <!-- end header -->
     <main>
-      <section class="banner"></section>
+      <section class="banner">
+        <div class="container-fluid p-0">
+          <div class="banner-container">
+            <picture>
+              <img src="./assets/images/banner.jpg" alt="" />
+            </picture>
+            <div class="banner-booking">
+              <div class="check-in">
+                <input
+                  type="text"
+                  name="CheckInDate"
+                  id="check-in"
+                  placeholder="Ngày đến"
+                />
+              </div>
+              <div class="check-out">
+                <input
+                  type="text"
+                  name="CheckOutDate"
+                  id="check-out"
+                  placeholder="Ngày đi"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     <!-- layout -->
     <!-- footer -->
@@ -75,6 +102,8 @@
     <script src="./assets/libs/bootstrap.bundle.min.js"></script>
     <script src="./assets/libs/imagesloaded.pkgd.min.js"></script>
     <script src="./assets/libs/swiper-bundle.min.js"></script>
+    <script src="./assets/libs/moment.min.js"></script>
+    <script src="./assets/libs/lightpick.min.js"></script>
     <!-- import custom js -->
     <script type="module" src="./assets/main/js/script.min.js"></script>
 

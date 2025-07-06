@@ -27,6 +27,15 @@
     grid-template-columns: 1fr 1fr;
     gap: 24px;
     &-col {
+      ul {
+        li {
+          a {
+            &:hover {
+              color: var(--color-white);
+            }
+          }
+        }
+      }
       &-title {
         margin-bottom: 40px;
       }
@@ -121,6 +130,13 @@
       align-items: center;
       gap: 24px;
       margin-top: 32px;
+      li {
+        a {
+          &:hover {
+            color: var(--color-white);
+          }
+        }
+      }
     }
   }
 }
