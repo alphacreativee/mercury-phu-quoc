@@ -1,0 +1,49 @@
+:root {
+  --font-heading: "", sans-serif;
+  --font-body: "SFU Futura", sans-serif;
+  --color-primary: #84161a;
+  --color-secondary: #a91d36;
+  --color-white: #ffffff;
+  --color-blue-cyan: #008dc4;
+}
+.font-heading {
+  font-family: var(--font-heading);
+}
+.font-body {
+  font-family: var(--font-body);
+}
+.color-primary {
+  color: var(--color-primary);
+}
+.color-secondary {
+  color: var(--color-secondary);
+}
+.color-white {
+  color: var(--color-white);
+}
+.color-blue-cyan {
+  color: var(--color-blue-cyan);
+}
+.h0-f {
+  font-size: 80px;
+  line-height: 80px;
+}
+.h1-f {
+  font-size: 24px;
+  line-height: 32px;
+}
+.b0-font {
+  font-size: 18px;
+  line-height: 26px;
+}
+.b1-font {
+  font-size: 16px;
+  line-height: 24px;
+}
+.b2-font {
+  font-size: 14px;
+  line-height: 20px;
+}
+.fw-regular {
+  font-weight: 400;
+}

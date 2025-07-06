@@ -1,0 +1,112 @@
+.dropdown-custom {
+  position: relative;
+  cursor: pointer;
+  &-btn {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    .value-select {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      span {
+        font-size: 14px;
+        line-height: 20px;
+        color: var(--color-primary);
+      }
+      img {
+        width: 24px;
+        height: 16px;
+      }
+    }
+    .icon {
+      transition: all 0.3s ease;
+    }
+    &.--active {
+      .icon {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+  &-menu {
+    position: absolute;
+    background-color: var(--color-primary);
+    padding: 20px;
+    width: max-content;
+    left: -20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    bottom: -30px;
+    transform: translateY(100%);
+    clip-path: inset(0 0 100% 0);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    &.dropdown--active {
+      opacity: 1;
+      visibility: visible;
+      clip-path: inset(0 0 0% 0);
+    }
+  }
+  &-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    span {
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--color-white);
+    }
+    img {
+      width: 24px;
+      height: 16px;
+    }
+  }
+}
+.global-button {
+  display: inline-block;
+  padding: 12px 34px;
+  border-radius: 4px;
+  background-color: var(--color-primary);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-white);
+  &.reverse {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+  }
+}
+.link-underline {
+  position: relative;
+  &.color-white {
+    &::before {
+      background-color: var(--color-white);
+    }
+  }
+  &:hover {
+    &::before {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+  }
+  &.active {
+    &::before {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-primary);
+    bottom: -2px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
