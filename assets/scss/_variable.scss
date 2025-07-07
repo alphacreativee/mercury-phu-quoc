@@ -8,6 +8,16 @@
   --color-blue-cyan: #008dc4;
   --color-cream: #f0ecee;
 }
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-primary);
+}
+
+a {
+  color: var(--color-primary);
+}
+
 .font-heading {
   font-family: var(--font-heading);
 }

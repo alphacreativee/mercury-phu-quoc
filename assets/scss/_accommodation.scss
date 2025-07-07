@@ -1,0 +1,111 @@
+.accommodation {
+  &-content {
+    padding: 0 80px;
+    margin-bottom: 140px;
+
+    .box {
+      &-global {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: flex-start;
+      }
+
+      &-button {
+        width: max-content;
+        grid-column: 2 / 3;
+        margin-left: auto;
+      }
+    }
+  }
+
+  &-slider {
+    &__main {
+      padding-left: 80px;
+
+      .accommodation-card {
+        .item-image {
+          aspect-ratio: 411 / 515;
+        }
+      }
+
+      .item {
+        &-image {
+          width: 100%;
+          aspect-ratio: 503 / 336;
+          position: relative;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        &-tag {
+          padding: 6px 16px;
+          border-radius: 4px;
+          background-color: var(--color-white);
+
+          position: absolute;
+          bottom: 16px;
+          left: 16px;
+        }
+
+        &-content {
+          margin-top: 24px;
+
+          .desc {
+            max-width: 80%;
+            margin-top: 16px;
+          }
+        }
+      }
+    }
+
+    .swiper-pagination {
+      margin-top: 40px;
+      position: relative;
+      transform: none;
+      height: 1px;
+      background-color: rgba($color: #84161a, $alpha: 0.1);
+      width: calc(100% - 120px);
+      margin-left: auto;
+
+      .swiper-pagination-progressbar-fill {
+        background-color: var(--color-primary);
+      }
+    }
+
+    .swiper-operation {
+      display: flex;
+      align-items: flex-end;
+      padding: 0 80px;
+    }
+
+    .swiper-arrows {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(50%);
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        width: 37px;
+        height: 12px;
+        color: var(--color-primary);
+        position: unset;
+        transform: none;
+        margin: 0;
+
+        &::after {
+          display: none;
+        }
+      }
+
+      .swiper-button-prev {
+        transform: scale(-1);
+      }
+    }
+  }
+}

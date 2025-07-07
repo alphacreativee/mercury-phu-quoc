@@ -97,7 +97,7 @@ function bookingForm() {
         calendar.style.top = rect.bottom + window.scrollY + "px";
         calendar.style.left = rect.left + window.scrollX + "px";
       }
-    },
+    }
   });
 
   // Counter functionality
@@ -121,10 +121,41 @@ function bookingForm() {
   });
 }
 // end booking
+
+function sectionAccommodation() {
+  if ($("section.accommodation").length < 1) return;
+
+  $("section.accommodation").each(function () {
+    const $section = $(this);
+    const $slider = $section.find(".accommodation-slider__main");
+    const $pagination = $section.find(".swiper-pagination");
+    const $prev = $section.find(".swiper-button-prev");
+    const $next = $section.find(".swiper-button-next");
+
+    const isOffer = $slider.hasClass("offer-slider");
+
+    new Swiper($slider[0], {
+      spaceBetween: 40,
+      slidesPerView: isOffer ? 2.5 : 3.3,
+      speed: 1000,
+      slidesOffsetAfter: 80,
+      pagination: {
+        el: $pagination[0],
+        type: "progressbar"
+      },
+      navigation: {
+        prevEl: $prev[0],
+        nextEl: $next[0]
+      }
+    });
+  });
+}
+
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
   bookingForm();
+  sectionAccommodation();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body
