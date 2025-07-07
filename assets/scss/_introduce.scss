@@ -1,0 +1,60 @@
+.introduce {
+  padding-top: 100px;
+  background-image: url("../../images/use/img-artwork-sec.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  &-box {
+    margin-bottom: 100px;
+  }
+  &-heading {
+    text-align: center;
+    margin-bottom: 100px;
+  }
+  &-content {
+    position: relative;
+  }
+  &-tag {
+    position: absolute;
+    bottom: -30px;
+    right: -70px;
+    max-width: 460px;
+    transform: rotate(-9deg);
+    text-align: center;
+  }
+  &-description {
+    max-width: calc(100% - 16.6667%);
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+  }
+  &-main {
+    max-width: calc(100% - 160px);
+    margin: 0 auto;
+    position: relative;
+  }
+  &-highlight {
+    position: absolute;
+    left: 80px;
+    bottom: 80px;
+    background-color: var(--color-primary);
+    max-width: 320px;
+    width: 100%;
+    border-radius: 8px;
+    padding: 48px 32px;
+    h2 {
+      margin-bottom: 16px;
+    }
+  }
+  &-img {
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 1440 / 720;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
