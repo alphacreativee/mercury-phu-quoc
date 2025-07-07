@@ -110,6 +110,16 @@
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
-.spacing-1x {
-  height: 100px;
+
+.box-title {
+  position: relative;
+  width: fit-content;
+  .tag {
+    position: absolute;
+    bottom: -60px;
+    right: -70px;
+    max-width: 460px;
+    transform: rotate(-9deg);
+    text-align: center;
+  }
 }

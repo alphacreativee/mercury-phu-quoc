@@ -1,0 +1,11 @@
+.room {
+  .room-content {
+    padding: 0 80px;
+    margin-bottom: 140px;
+    .box-global {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+}
