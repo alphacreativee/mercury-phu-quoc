@@ -1,6 +1,7 @@
 :root {
-  --font-heading: "", sans-serif;
+  --font-heading: "SVN-Domaine Display", sans-serif;
   --font-body: "SFU Futura", sans-serif;
+  --font-tag: "Hermes", sans-serif;
   --color-primary: #84161a;
   --color-secondary: #a91d36;
   --color-white: #ffffff;
@@ -12,6 +13,9 @@
 }
 .font-body {
   font-family: var(--font-body);
+}
+.font-tag {
+  font-family: var(--font-tag);
 }
 .color-primary {
   color: var(--color-primary);
