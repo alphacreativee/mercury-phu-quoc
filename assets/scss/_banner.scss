@@ -1,6 +1,14 @@
 .banner {
   overflow: hidden;
-
+  &.option-left {
+    .banner-title {
+      bottom: 80px;
+      left: 80px;
+      transform: translateX(0);
+      max-width: calc(6 / 12 * 100%);
+      width: 100%;
+    }
+  }
   &-container {
     width: 100%;
     height: 100svh;
