@@ -1,0 +1,83 @@
+.navigation-tab {
+  padding: 140px 80px;
+  background-image: url("../../images/use/img-artwork-sec.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  &-top {
+    margin-bottom: 190px;
+  }
+  &-bottom {
+    .nav {
+      margin-bottom: 80px;
+      border: none;
+      &-link {
+        border: none;
+        &.active {
+          .title-tab {
+            &::before {
+              transform: scaleX(1);
+              transform-origin: bottom left;
+            }
+          }
+        }
+        &:hover {
+          .title-tab {
+            &::before {
+              transform: scaleX(1);
+              transform-origin: bottom left;
+            }
+          }
+        }
+      }
+      .title-tab {
+        position: relative;
+        &::before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 1px;
+          background-color: var(--color-primary);
+          bottom: -2px;
+          left: 0;
+          transform: scaleX(0);
+          transform-origin: bottom right;
+          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+      }
+    }
+  }
+  .navigation {
+    &-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 80px 40px;
+    }
+    &-img {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      width: 100%;
+      aspect-ratio: 400 / 267;
+      margin-bottom: 24px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &-tag {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      padding: 6px 16px;
+      border-radius: 4px;
+      background-color: var(--color-secondary);
+    }
+    &-content {
+      h2 {
+        margin-bottom: 16px;
+      }
+    }
+  }
+}

@@ -272,3 +272,15 @@
     }
   }
 }
+.box-global-wrapper {
+  .box-global {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-start;
+    .box-title {
+      .tag {
+        right: -50%;
+      }
+    }
+  }
+}
