@@ -97,7 +97,7 @@ function bookingForm() {
         calendar.style.top = rect.bottom + window.scrollY + "px";
         calendar.style.left = rect.left + window.scrollX + "px";
       }
-    }
+    },
   });
 
   // Counter functionality
@@ -141,21 +141,65 @@ function sectionAccommodation() {
       slidesOffsetAfter: 80,
       pagination: {
         el: $pagination[0],
-        type: "progressbar"
+        type: "progressbar",
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0]
-      }
+        nextEl: $next[0],
+      },
     });
   });
 }
+function swiperFacility() {
+  let interleaveOffset = 0.9;
+  const swiperFacility = new Swiper(".swiper-facility", {
+    slidesPerView: 1,
+    watchSlidesProgress: true,
 
+    speed: 1500,
+    loop: true,
+    autoplay: {
+      delay: 3000,
+    },
+    on: {
+      progress(swiper) {
+        swiper.slides.forEach((slide) => {
+          const slideProgress = slide.progress || 0;
+          const innerOffset = swiper.width * interleaveOffset;
+          const innerTranslate = slideProgress * innerOffset;
+
+          if (!isNaN(innerTranslate)) {
+            const slideInner = slide.querySelector(".box-img");
+            if (slideInner) {
+              slideInner.style.transform = `translate3d(${innerTranslate}px, 0, 0)`;
+            }
+          }
+        });
+      },
+      touchStart(swiper) {
+        swiper.slides.forEach((slide) => {
+          slide.style.transition = "";
+        });
+      },
+      setTransition(swiper, speed) {
+        const easing = "cubic-bezier(0.25, 0.1, 0.25, 1)";
+        swiper.slides.forEach((slide) => {
+          slide.style.transition = `${speed}ms ${easing}`;
+          const slideInner = slide.querySelector(".box-img");
+          if (slideInner) {
+            slideInner.style.transition = `${speed}ms ${easing}`;
+          }
+        });
+      },
+    },
+  });
+}
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
   bookingForm();
   sectionAccommodation();
+  swiperFacility();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body
