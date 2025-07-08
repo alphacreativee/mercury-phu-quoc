@@ -161,6 +161,9 @@ function swiperFacility() {
     autoplay: {
       delay: 3000,
     },
+    pagination: {
+      el: ".swiper-facility .swiper-pagination",
+    },
     on: {
       progress(swiper) {
         swiper.slides.forEach((slide) => {
