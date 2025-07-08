@@ -1,0 +1,46 @@
+.destination-detail {
+  .detail-wrapper {
+    padding: 0 80px;
+
+    .col-content {
+      padding-right: calc(100% / 12);
+    }
+
+    .col-media {
+      height: max-content;
+      position: sticky;
+      top: 120px;
+
+      .swiper {
+        width: 100%;
+        aspect-ratio: 628 / 545;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+    }
+
+    .excerpt {
+      margin-top: 40px;
+    }
+
+    .content {
+      margin-top: 40px;
+
+      p {
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+      h4 {
+        &:not(:first-child) {
+          margin-top: 40px;
+        }
+        margin-bottom: 0;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 700;
+        font-family: var(--font-body);
+      }
+    }
+  }
+}
