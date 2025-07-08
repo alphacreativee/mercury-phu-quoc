@@ -714,6 +714,14 @@
       <div class="spacing-14x"></div>
     </main>
     <!-- layout -->
+    <script>
+      fetch("./components/cta-mess.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("cta-mess").innerHTML = data;
+        });
+    </script>
+    <div id="cta-mess"></div>
     <!-- footer -->
     <script>
       fetch("./components/footer.html")

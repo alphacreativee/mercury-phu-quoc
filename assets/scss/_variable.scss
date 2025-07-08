@@ -16,6 +16,10 @@ body {
 
 a {
   color: var(--color-primary);
+
+  &:hover {
+    color: var(--color-primary);
+  }
 }
 
 .font-heading {

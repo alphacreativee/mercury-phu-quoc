@@ -97,7 +97,7 @@ function bookingForm() {
         calendar.style.top = rect.bottom + window.scrollY + "px";
         calendar.style.left = rect.left + window.scrollX + "px";
       }
-    },
+    }
   });
 
   // Counter functionality
@@ -141,12 +141,12 @@ function sectionAccommodation() {
       slidesOffsetAfter: 80,
       pagination: {
         el: $pagination[0],
-        type: "progressbar",
+        type: "progressbar"
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0],
-      },
+        nextEl: $next[0]
+      }
     });
   });
 }
@@ -159,10 +159,10 @@ function swiperFacility() {
     speed: 1500,
     loop: true,
     autoplay: {
-      delay: 3000,
+      delay: 3000
     },
     pagination: {
-      el: ".swiper-facility .swiper-pagination",
+      el: ".swiper-facility .swiper-pagination"
     },
     on: {
       progress(swiper) {
@@ -193,16 +193,31 @@ function swiperFacility() {
             slideInner.style.transition = `${speed}ms ${easing}`;
           }
         });
-      },
-    },
+      }
+    }
   });
 }
+
+function ctaMess() {
+  ScrollTrigger.create({
+    start: "top top",
+    end: 99999,
+    paused: true,
+    onUpdate: (self) => {
+      self.direction === 1
+        ? $("#cta-mess").addClass("hide")
+        : $("#cta-mess").removeClass("hide");
+    }
+  });
+}
+
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
   bookingForm();
   sectionAccommodation();
   swiperFacility();
+  ctaMess();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body
