@@ -13,9 +13,23 @@
 
       .swiper {
         width: 100%;
-        aspect-ratio: 628 / 545;
-        border-radius: 12px;
         overflow: hidden;
+
+        .box-img {
+          border-radius: 12px;
+          overflow: hidden;
+
+          img {
+            aspect-ratio: 628 / 545;
+            border-radius: 12px;
+            overflow: hidden;
+          }
+        }
+      }
+
+      .caption {
+        margin-top: 12px;
+        text-align: center;
       }
     }
 
