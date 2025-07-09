@@ -97,7 +97,7 @@ function bookingForm() {
         calendar.style.top = rect.bottom + window.scrollY + "px";
         calendar.style.left = rect.left + window.scrollX + "px";
       }
-    }
+    },
   });
 
   // Counter functionality
@@ -141,12 +141,12 @@ function sectionAccommodation() {
       slidesOffsetAfter: 80,
       pagination: {
         el: $pagination[0],
-        type: "progressbar"
+        type: "progressbar",
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0]
-      }
+        nextEl: $next[0],
+      },
     });
   });
 }
@@ -159,10 +159,10 @@ function swiperFacility() {
     speed: 1500,
     loop: true,
     autoplay: {
-      delay: 3000
+      delay: 3000,
     },
     pagination: {
-      el: ".swiper-facility .swiper-pagination"
+      el: ".swiper-facility .swiper-pagination",
     },
     on: {
       progress(swiper) {
@@ -193,8 +193,8 @@ function swiperFacility() {
             slideInner.style.transition = `${speed}ms ${easing}`;
           }
         });
-      }
-    }
+      },
+    },
   });
 }
 
@@ -207,10 +207,29 @@ function ctaMess() {
       self.direction === 1
         ? $("#cta-mess").addClass("hide")
         : $("#cta-mess").removeClass("hide");
+    },
+  });
+}
+function distortionImg() {
+  document.querySelectorAll(".distortion-img").forEach((wrapper) => {
+    const imgElement = wrapper.querySelector("img");
+
+    if (imgElement) {
+      const imageSrc = imgElement.src;
+
+      imgElement.style.display = "none";
+
+      new hoverEffect({
+        parent: wrapper,
+        intensity: 0.1,
+        angle: 0,
+        image1: imageSrc,
+        image2: imageSrc,
+        displacementImage: "./assets/images/distortion/ripple.jpg",
+      });
     }
   });
 }
-
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
@@ -218,6 +237,7 @@ const init = () => {
   sectionAccommodation();
   swiperFacility();
   ctaMess();
+  distortionImg();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body
