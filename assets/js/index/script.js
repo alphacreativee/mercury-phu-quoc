@@ -97,7 +97,7 @@ function bookingForm() {
         calendar.style.top = rect.bottom + window.scrollY + "px";
         calendar.style.left = rect.left + window.scrollX + "px";
       }
-    },
+    }
   });
 
   // Counter functionality
@@ -141,12 +141,12 @@ function sectionAccommodation() {
       slidesOffsetAfter: 80,
       pagination: {
         el: $pagination[0],
-        type: "progressbar",
+        type: "progressbar"
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0],
-      },
+        nextEl: $next[0]
+      }
     });
   });
 }
@@ -159,10 +159,10 @@ function swiperFacility() {
     speed: 1500,
     loop: true,
     autoplay: {
-      delay: 3000,
+      delay: 3000
     },
     pagination: {
-      el: ".swiper-facility .swiper-pagination",
+      el: ".swiper-facility .swiper-pagination"
     },
     on: {
       progress(swiper) {
@@ -193,8 +193,39 @@ function swiperFacility() {
             slideInner.style.transition = `${speed}ms ${easing}`;
           }
         });
+      }
+    }
+  });
+}
+
+function swiperAccommodation() {
+  const $sliders = $(".swiper-accomodation");
+
+  if ($sliders.length < 1) return;
+
+  $sliders.each(function () {
+    const $slider = $(this);
+    const $section = $slider.closest("section.accommodation-detail");
+
+    const $pagination = $section.find(".swiper-pagination");
+    const $prev = $section.find(".swiper-button-prev");
+    const $next = $section.find(".swiper-button-next");
+
+    new Swiper($slider[0], {
+      slidesPerView: 2.5,
+      spaceBetween: 16,
+      slidesOffsetAfter: 80,
+      speed: 1000,
+      parallax: true,
+      pagination: {
+        el: $pagination[0],
+        type: "progressbar"
       },
-    },
+      navigation: {
+        prevEl: $prev[0],
+        nextEl: $next[0]
+      }
+    });
   });
 }
 
@@ -207,7 +238,7 @@ function ctaMess() {
       self.direction === 1
         ? $("#cta-mess").addClass("hide")
         : $("#cta-mess").removeClass("hide");
-    },
+    }
   });
 }
 function distortionImg() {
@@ -225,7 +256,7 @@ function distortionImg() {
         angle: 0,
         image1: imageSrc,
         image2: imageSrc,
-        displacementImage: "./assets/images/distortion/ripple.jpg",
+        displacementImage: "./assets/images/distortion/ripple.jpg"
       });
     }
   });
@@ -238,6 +269,7 @@ const init = () => {
   swiperFacility();
   ctaMess();
   distortionImg();
+  swiperAccommodation();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body

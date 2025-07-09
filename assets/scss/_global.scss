@@ -85,12 +85,7 @@
       background-color: var(--color-white);
     }
   }
-  &:hover {
-    &::before {
-      transform: scaleX(1);
-      transform-origin: bottom left;
-    }
-  }
+  &:hover,
   &.active {
     &::before {
       transform: scaleX(1);
@@ -256,10 +251,18 @@
     transition: background-color 0.3s ease, transform 0.5s ease,
       opacity 0.4s ease;
 
+    path {
+      transition: all 0.3s ease;
+    }
+
     &.mess {
       background-color: var(--color-secondary);
       &:hover {
         background-color: var(--color-primary);
+
+        path {
+          stroke: var(--color-secondary);
+        }
       }
     }
     &.phone {
@@ -268,6 +271,10 @@
         opacity 0.4s ease;
       &:hover {
         background-color: var(--color-secondary);
+
+        path {
+          stroke: var(--color-primary);
+        }
       }
     }
   }
@@ -281,6 +288,62 @@
       .tag {
         right: -50%;
       }
+    }
+  }
+}
+
+.separate-line {
+  height: 1px;
+  background-color: var(--color-primary);
+  margin: 0 auto;
+  width: calc(100% - 160px);
+
+  &.color-secondary {
+    background-color: var(--color-secondary);
+  }
+}
+
+.swiper-operation {
+  display: flex;
+  align-items: flex-end;
+  padding: 0 80px;
+
+  .swiper-pagination {
+    margin-top: 40px;
+    position: relative;
+    transform: none;
+    height: 1px;
+    background-color: rgba($color: #84161a, $alpha: 0.1);
+    width: calc(100% - 120px);
+    margin-left: auto;
+
+    .swiper-pagination-progressbar-fill {
+      background-color: var(--color-primary);
+    }
+  }
+
+  .swiper-arrows {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateY(50%);
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      width: 37px;
+      height: 12px;
+      color: var(--color-primary);
+      position: unset;
+      transform: none;
+      margin: 0;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    .swiper-button-prev {
+      transform: scale(-1);
     }
   }
 }

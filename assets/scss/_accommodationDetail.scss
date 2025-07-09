@@ -1,0 +1,152 @@
+.accommodation-detail {
+  .detail {
+    &-info {
+      padding: 0 80px;
+
+      &__left {
+        padding-right: calc(100% / 12);
+
+        .desc {
+          margin-top: 16px;
+        }
+
+        .btn-booking {
+          margin-top: 48px;
+        }
+      }
+
+      &__right {
+        .list-item {
+          margin-top: 22px;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 12px 60px;
+
+          li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+            line-height: 24px;
+
+            &.view-more {
+              cursor: pointer;
+
+              .icon {
+                transition: all 0.5s ease;
+              }
+
+              .text {
+                position: relative;
+                &::before {
+                  content: "";
+                  position: absolute;
+                  width: 100%;
+                  height: 1px;
+                  background-color: var(--color-primary);
+                  bottom: -2px;
+                  left: 0;
+                  transform: scaleX(1);
+                  transform-origin: bottom left;
+                  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+              }
+
+              &:hover {
+                .icon {
+                  transform: rotate(180deg);
+                }
+
+                .text {
+                  &::before {
+                    transform: scaleX(0);
+                    transform-origin: bottom right;
+                  }
+                }
+              }
+            }
+
+            .icon {
+              width: 32px;
+              height: 32px;
+            }
+          }
+        }
+      }
+    }
+
+    &-gallery {
+      margin-top: 64px;
+
+      .swiper {
+        padding-left: 80px;
+
+        .image {
+          width: 100%;
+          aspect-ratio: 519 / 347;
+          border-radius: 8px;
+          position: relative;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            scale: 1.2;
+          }
+        }
+      }
+    }
+  }
+
+  .modal {
+    &-dialog {
+      max-width: 1440px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      position: relative;
+
+      .btn-close {
+        width: 32px;
+        height: 32px;
+        background: none;
+        border-radius: unset;
+        opacity: 1;
+        position: absolute;
+        top: 50px;
+        right: 80px;
+        z-index: 2;
+      }
+    }
+
+    &-content {
+      height: 840px;
+      position: relative;
+    }
+
+    &-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .content {
+        transform: translateY(calc((-120px) - 32px));
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 120px;
+      }
+
+      .list-item {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px 80px;
+      }
+    }
+  }
+}
