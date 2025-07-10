@@ -97,7 +97,7 @@ function bookingForm() {
         calendar.style.top = rect.bottom + window.scrollY + "px";
         calendar.style.left = rect.left + window.scrollX + "px";
       }
-    }
+    },
   });
 
   // Counter functionality
@@ -141,12 +141,12 @@ function sectionAccommodation() {
       slidesOffsetAfter: 80,
       pagination: {
         el: $pagination[0],
-        type: "progressbar"
+        type: "progressbar",
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0]
-      }
+        nextEl: $next[0],
+      },
     });
   });
 }
@@ -159,10 +159,10 @@ function swiperFacility() {
     speed: 1500,
     loop: true,
     autoplay: {
-      delay: 3000
+      delay: 3000,
     },
     pagination: {
-      el: ".swiper-facility .swiper-pagination"
+      el: ".swiper-facility .swiper-pagination",
     },
     on: {
       progress(swiper) {
@@ -193,8 +193,8 @@ function swiperFacility() {
             slideInner.style.transition = `${speed}ms ${easing}`;
           }
         });
-      }
-    }
+      },
+    },
   });
 }
 
@@ -219,12 +219,12 @@ function swiperAccommodation() {
       parallax: true,
       pagination: {
         el: $pagination[0],
-        type: "progressbar"
+        type: "progressbar",
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0]
-      }
+        nextEl: $next[0],
+      },
     });
   });
 }
@@ -238,7 +238,7 @@ function ctaMess() {
       self.direction === 1
         ? $("#cta-mess").addClass("hide")
         : $("#cta-mess").removeClass("hide");
-    }
+    },
   });
 }
 function distortionImg() {
@@ -256,10 +256,58 @@ function distortionImg() {
         angle: 0,
         image1: imageSrc,
         image2: imageSrc,
-        displacementImage: "./assets/images/distortion/ripple.jpg"
+        displacementImage: "./assets/images/distortion/ripple.jpg",
       });
     }
   });
+}
+function loadingBanner() {
+  let classesRemoved = false; // Biến để đảm bảo class chỉ xóa một lần
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".banner-hero-clip",
+      start: "top top",
+      scrub: true,
+      pin: true,
+      markers: true,
+      toggleActions: "play none none none", // Chỉ chạy animation một lần khi vào vùng trigger
+      onUpdate: (self) => {
+        if (self.progress === 1 && !classesRemoved) {
+          document
+            .querySelector(".banner-hero-clip")
+            ?.classList.remove("banner-hero-clip");
+          document.querySelectorAll(".anim-clip-circle").forEach((el) => {
+            el.classList.remove("anim-clip-circle");
+          });
+          document.querySelector(".banner-title").classList.add("d-none");
+          document.getElementById("header").classList.remove("hide-header");
+          classesRemoved = true;
+        }
+      },
+      onLeave: () => {
+        // Vô hiệu hóa ScrollTrigger và xóa pin
+        ScrollTrigger.getById(tl.scrollTrigger.id)?.disable();
+        const banner = document.querySelector(".banner-hero-clip");
+        if (banner) {
+          banner.style.position = ""; // Xóa style position
+          banner.style.top = ""; // Xóa style top
+          banner.style.height = ""; // Xóa style height nếu có
+        }
+        // Cuộn về đầu trang
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      },
+    },
+  });
+
+  tl.to(".anim-clip-circle", {
+    clipPath: "circle(70.7% at 50% 50%)",
+  }).to(
+    ".banner-container img",
+    {
+      scale: 1,
+    },
+    0
+  );
 }
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
@@ -270,6 +318,7 @@ const init = () => {
   ctaMess();
   distortionImg();
   swiperAccommodation();
+  loadingBanner();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body
