@@ -279,6 +279,66 @@
     }
   }
 }
+.group-mess {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    top: 0;
+    left: -16px;
+    z-index: -1;
+  }
+  &:hover {
+    .group-list-mess {
+      pointer-events: auto;
+      .mess-item {
+        transform: scale(1);
+      }
+    }
+  }
+  .group-list-mess {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    left: 0;
+    top: 0;
+    transform: translateX(calc(-100% - 16px));
+    pointer-events: none;
+    .mess-item {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: var(--color-secondary);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid var(--color-white);
+      transition: background-color 0.3s ease, transform 0.5s ease,
+        opacity 0.4s ease;
+      transform: scale(0);
+      transform-origin: center;
+      &:hover {
+        background-color: var(--color-primary);
+        svg {
+          path {
+            color: var(--color-secondary);
+          }
+        }
+      }
+      svg {
+        width: 20px;
+        height: 20px;
+        path {
+          color: var(--color-primary);
+        }
+      }
+    }
+  }
+}
 .box-global-wrapper {
   .box-global {
     display: grid;
