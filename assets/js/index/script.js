@@ -203,15 +203,23 @@ function swiperAccommodation() {
 
   if ($sliders.length < 1) return;
 
-  $sliders.each(function () {
-    const $slider = $(this);
-    const $section = $slider.closest("section.accommodation-detail");
+  // Iterate through each accommodation-detail section
+  $(".accommodation-detail").each(function () {
+    const $section = $(this);
+    const $slider = $section.find(".swiper-accomodation");
 
-    const $pagination = $section.find(".swiper-pagination");
-    const $prev = $section.find(".swiper-button-prev");
-    const $next = $section.find(".swiper-button-next");
+    const $pagination = $slider
+      .closest(".detail-gallery")
+      .find(".swiper-pagination");
+    const $prev = $slider
+      .closest(".detail-gallery")
+      .find(".swiper-button-prev");
+    const $next = $slider
+      .closest(".detail-gallery")
+      .find(".swiper-button-next");
 
-    new Swiper($slider[0], {
+    // Initialize the main slider
+    const swiperMain = new Swiper($slider[0], {
       slidesPerView: 2.5,
       spaceBetween: 16,
       slidesOffsetAfter: 80,
@@ -226,6 +234,94 @@ function swiperAccommodation() {
         nextEl: $next[0]
       }
     });
+
+    // Handle modal gallery slider
+    const modalId = $slider.find(".swiper-slide").first().data("bs-target"); // e.g., "#modalGallery-1"
+    const $modal = $(modalId);
+
+    if ($modal.length) {
+      let swiperGallery = null;
+      let syncing = false;
+
+      // Add click event handler for swiper slides
+      $slider.find(".swiper-slide").on("click", function () {
+        const slideIndex = $(this).index(); // Get the index of the clicked slide
+        $modal.modal("show"); // Open the modal
+        swiperMain.slideTo(slideIndex, 0); // Sync main slider to clicked slide
+      });
+
+      $modal.on("shown.bs.modal", function () {
+        const $gallery = $modal.find(".swiper-accomodation-gallery");
+        const $paginationG = $modal.find(".swiper-pagination");
+        const $prevG = $modal.find(".swiper-button-prev");
+        const $nextG = $modal.find(".swiper-button-next");
+
+        // Add 'hidden' class to Swiper container to prevent visibility during initialization
+        $gallery.addClass("swiper-hidden");
+
+        // Delay to ensure modal transition completes
+        setTimeout(() => {
+          // If swiperGallery is already initialized, update it
+          if (swiperGallery) {
+            swiperGallery.update(); // Force re-calculation of dimensions
+            swiperGallery.slideTo(swiperMain.activeIndex, 0); // Sync with main slider
+            // Reveal Swiper after update
+            $gallery.removeClass("swiper-hidden").addClass("swiper-visible");
+            return;
+          }
+
+          // Initialize swiperGallery when modal opens for the first time
+          swiperGallery = new Swiper($gallery[0], {
+            slidesPerView: "auto",
+            spaceBetween: 40,
+            speed: 1000,
+            parallax: true,
+            centeredSlides: true,
+            pagination: {
+              el: $paginationG[0],
+              type: "progressbar"
+            },
+            navigation: {
+              prevEl: $prevG[0],
+              nextEl: $nextG[0]
+            },
+            on: {
+              slideChange: function () {
+                if (syncing) return;
+                syncing = true;
+                swiperMain.slideTo(swiperGallery.activeIndex, 0); // Sync main slider
+                syncing = false;
+              },
+              init: function () {
+                // Reveal Swiper after initialization
+                $gallery
+                  .removeClass("swiper-hidden")
+                  .addClass("swiper-visible");
+              }
+            }
+          });
+
+          // Force Swiper to update immediately after initialization
+          swiperGallery.update();
+
+          // Sync gallery with main slider's active index
+          swiperGallery.slideTo(swiperMain.activeIndex, 0); // No animation on initial sync
+        }, 300); // Increased delay to account for modal transition
+      });
+
+      // Destroy swiperGallery when modal is hidden to free resources
+      $modal.on("hidden.bs.modal", function () {
+        if (swiperGallery) {
+          // Ensure Swiper is hidden again for next open
+          $modal
+            .find(".swiper-accomodation-gallery")
+            .removeClass("swiper-visible")
+            .addClass("swiper-hidden");
+          swiperGallery.destroy(true, true); // Destroy Swiper instance
+          swiperGallery = null; // Reset for re-initialization
+        }
+      });
+    }
   });
 }
 

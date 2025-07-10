@@ -202,7 +202,7 @@
                   <li
                     class="view-more"
                     data-bs-toggle="modal"
-                    data-bs-target="#btvHighlight"
+                    data-bs-target="#modalFacility-1"
                   >
                     <div class="icon">
                       <img src="./assets/images/use/icon-plus.svg" alt="" />
@@ -213,7 +213,7 @@
 
                 <div
                   class="modal fade"
-                  id="btvHighlight"
+                  id="modalFacility-1"
                   data-bs-keyboard="false"
                   tabindex="-1"
                   aria-hidden="true"
@@ -361,12 +361,159 @@
                     </div>
                   </div>
                 </div>
+
+                <div
+                  class="modal fade modal-gallery"
+                  id="modalGallery-1"
+                  data-bs-keyboard="false"
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <div
+                    class="modal-dialog modal-dialog-centered modal-fullscreen"
+                  >
+                    <div class="modal-content">
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                        data-cursor-text
+                      >
+                        <svg
+                          width="34"
+                          height="34"
+                          viewBox="0 0 34 34"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M33 1L1 33"
+                            stroke="#820003"
+                            stroke-width="1.24675"
+                            stroke-linecap="round"
+                          />
+                          <path
+                            d="M33 33L1 1"
+                            stroke="#820003"
+                            stroke-width="1.24675"
+                            stroke-linecap="round"
+                          />
+                        </svg>
+                      </button>
+                      <div
+                        class="modal-body"
+                        style="
+                          background-color: #fff1e2;
+                          background-image: url('./assets/images/use/bg-modal.svg');
+                          background-repeat: no-repeat;
+                          background-position: top center;
+                          background-size: cover;
+                        "
+                      >
+                        <div class="content">
+                          <div class="swiper swiper-accomodation-gallery">
+                            <div class="swiper-wrapper">
+                              <div class="swiper-slide">
+                                <div class="image">
+                                  <img
+                                    src="./assets/images/fac.png"
+                                    data-swiper-parallax="-5%"
+                                    alt=""
+                                  />
+                                </div>
+                              </div>
+                              <div class="swiper-slide">
+                                <div class="image">
+                                  <img
+                                    src="./assets/images/fac2.png"
+                                    data-swiper-parallax="-5%"
+                                    alt=""
+                                  />
+                                </div>
+                              </div>
+                              <div class="swiper-slide">
+                                <div class="image">
+                                  <img
+                                    src="./assets/images/fac.png"
+                                    data-swiper-parallax="-5%"
+                                    alt=""
+                                  />
+                                </div>
+                              </div>
+                              <div class="swiper-slide">
+                                <div class="image">
+                                  <img
+                                    src="./assets/images/fac.png"
+                                    data-swiper-parallax="-10%"
+                                    alt=""
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="swiper-operation">
+                            <div class="swiper-arrows">
+                              <div class="swiper-button-prev">
+                                <svg
+                                  width="24"
+                                  height="8"
+                                  viewBox="0 0 24 8"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M1 4L22 4"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                  />
+                                  <path
+                                    d="M19 7.5L23 4L19 0.5"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                </svg>
+                              </div>
+                              <div class="swiper-button-next">
+                                <svg
+                                  width="24"
+                                  height="8"
+                                  viewBox="0 0 24 8"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M1 4L22 4"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                  />
+                                  <path
+                                    d="M19 7.5L23 4L19 0.5"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                </svg>
+                              </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="detail-gallery">
               <div class="swiper swiper-accomodation">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide">
+                  <div
+                    class="swiper-slide"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalGallery-1"
+                  >
                     <div class="image">
                       <img
                         src="./assets/images/fac.png"
@@ -375,7 +522,11 @@
                       />
                     </div>
                   </div>
-                  <div class="swiper-slide">
+                  <div
+                    class="swiper-slide"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalGallery-1"
+                  >
                     <div class="image">
                       <img
                         src="./assets/images/fac2.png"
@@ -384,7 +535,11 @@
                       />
                     </div>
                   </div>
-                  <div class="swiper-slide">
+                  <div
+                    class="swiper-slide"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalGallery-1"
+                  >
                     <div class="image">
                       <img
                         src="./assets/images/fac.png"
@@ -393,7 +548,11 @@
                       />
                     </div>
                   </div>
-                  <div class="swiper-slide">
+                  <div
+                    class="swiper-slide"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalGallery-1"
+                  >
                     <div class="image">
                       <img
                         src="./assets/images/fac.png"
@@ -456,6 +615,489 @@
         </div>
       </section>
       <div class="spacing-14x"></div>
+      <section class="accommodation-detail">
+        <div class="container-fluid p-0">
+          <div class="detail-wrapper">
+            <div class="detail-info row g-0">
+              <div class="col-lg-6 col-12 detail-info__left">
+                <div class="title h1-font font-heading color-primary">
+                  Four Bedroom Villa
+                </div>
+                <div class="desc b1-font color-primary">
+                  Căn biệt thự rộng rãi với thiết kế tinh tế, lý tưởng cho các
+                  gia đình đa thế hệ hoặc nhóm bạn đang tìm kiếm một kỳ nghỉ
+                  riêng tư.
+                </div>
+                <a href="#" class="btn-booking global-button text-uppercase">
+                  ĐẶT PHÒNG
+                </a>
+              </div>
+              <div class="col-lg-6 col-12 detail-info__right">
+                <div class="tag b2-font text-uppercase">TIỆN ÍCH</div>
+                <ul class="list-item">
+                  <li>
+                    <div class="icon">
+                      <img src="./assets/images/accommodation/m2.svg" alt="" />
+                    </div>
+                    600 m2
+                  </li>
+                  <li>
+                    <div class="icon">
+                      <img src="./assets/images/accommodation/m2.svg" alt="" />
+                    </div>
+                    4 trẻ em
+                  </li>
+                  <li>
+                    <div class="icon">
+                      <img src="./assets/images/accommodation/m2.svg" alt="" />
+                    </div>
+                    Phòng tắm đứng
+                  </li>
+                  <li>
+                    <div class="icon">
+                      <img src="./assets/images/accommodation/m2.svg" alt="" />
+                    </div>
+                    5 phòng
+                  </li>
+                  <li>
+                    <div class="icon">
+                      <img src="./assets/images/accommodation/m2.svg" alt="" />
+                    </div>
+                    Hướng vườn
+                  </li>
+                  <li>
+                    <div class="icon">
+                      <img src="./assets/images/accommodation/m2.svg" alt="" />
+                    </div>
+                    Bồn tắm
+                  </li>
+                  <li>
+                    <div class="icon">
+                      <img src="./assets/images/accommodation/m2.svg" alt="" />
+                    </div>
+                    Double
+                  </li>
+                  <li>
+                    <div class="icon">
+                      <img src="./assets/images/accommodation/m2.svg" alt="" />
+                    </div>
+                    Hồ bơi riêng
+                  </li>
+                  <li
+                    class="view-more"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalFacility-1"
+                  >
+                    <div class="icon">
+                      <img src="./assets/images/use/icon-plus.svg" alt="" />
+                    </div>
+                    <div class="text">Xem thêm</div>
+                  </li>
+                </ul>
+
+                <div
+                  class="modal fade"
+                  id="modalFacility-1"
+                  data-bs-keyboard="false"
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <div
+                    class="modal-dialog modal-dialog-centered modal-fullscreen"
+                  >
+                    <div class="modal-content">
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                        data-cursor-text
+                      >
+                        <svg
+                          width="34"
+                          height="34"
+                          viewBox="0 0 34 34"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M33 1L1 33"
+                            stroke="#820003"
+                            stroke-width="1.24675"
+                            stroke-linecap="round"
+                          />
+                          <path
+                            d="M33 33L1 1"
+                            stroke="#820003"
+                            stroke-width="1.24675"
+                            stroke-linecap="round"
+                          />
+                        </svg>
+                      </button>
+                      <div
+                        class="modal-body"
+                        style="
+                          background-color: #fff1e2;
+                          background-image: url('./assets/images/use/bg-modal.svg');
+                          background-repeat: no-repeat;
+                          background-position: top center;
+                          background-size: cover;
+                        "
+                      >
+                        <div class="content">
+                          <div class="tag text-center h1-font color-primary">
+                            TIỆN ÍCH
+                          </div>
+                          <ul class="list-item">
+                            <li>
+                              <div class="icon">
+                                <img
+                                  src="./assets/images/accommodation/m2.svg"
+                                  alt=""
+                                />
+                              </div>
+                              600 m2
+                            </li>
+                            <li>
+                              <div class="icon">
+                                <img
+                                  src="./assets/images/accommodation/m2.svg"
+                                  alt=""
+                                />
+                              </div>
+                              4 trẻ em
+                            </li>
+                            <li>
+                              <div class="icon">
+                                <img
+                                  src="./assets/images/accommodation/m2.svg"
+                                  alt=""
+                                />
+                              </div>
+                              Phòng tắm đứng
+                            </li>
+                            <li>
+                              <div class="icon">
+                                <img
+                                  src="./assets/images/accommodation/m2.svg"
+                                  alt=""
+                                />
+                              </div>
+                              5 phòng
+                            </li>
+                            <li>
+                              <div class="icon">
+                                <img
+                                  src="./assets/images/accommodation/m2.svg"
+                                  alt=""
+                                />
+                              </div>
+                              Hướng vườn
+                            </li>
+                            <li>
+                              <div class="icon">
+                                <img
+                                  src="./assets/images/accommodation/m2.svg"
+                                  alt=""
+                                />
+                              </div>
+                              Bồn tắm
+                            </li>
+                            <li>
+                              <div class="icon">
+                                <img
+                                  src="./assets/images/accommodation/m2.svg"
+                                  alt=""
+                                />
+                              </div>
+                              Double
+                            </li>
+                            <li>
+                              <div class="icon">
+                                <img
+                                  src="./assets/images/accommodation/m2.svg"
+                                  alt=""
+                                />
+                              </div>
+                              Hồ bơi riêng
+                            </li>
+                            <li>
+                              <div class="icon">
+                                <img
+                                  src="./assets/images/accommodation/m2.svg"
+                                  alt=""
+                                />
+                              </div>
+                              Hồ bơi riêng
+                            </li>
+                            <li>
+                              <div class="icon">
+                                <img
+                                  src="./assets/images/accommodation/m2.svg"
+                                  alt=""
+                                />
+                              </div>
+                              Hồ bơi riêng
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="modal fade modal-gallery"
+                  id="modalGallery-2"
+                  data-bs-keyboard="false"
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <div
+                    class="modal-dialog modal-dialog-centered modal-fullscreen"
+                  >
+                    <div class="modal-content">
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                        data-cursor-text
+                      >
+                        <svg
+                          width="34"
+                          height="34"
+                          viewBox="0 0 34 34"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M33 1L1 33"
+                            stroke="#820003"
+                            stroke-width="1.24675"
+                            stroke-linecap="round"
+                          />
+                          <path
+                            d="M33 33L1 1"
+                            stroke="#820003"
+                            stroke-width="1.24675"
+                            stroke-linecap="round"
+                          />
+                        </svg>
+                      </button>
+                      <div
+                        class="modal-body"
+                        style="
+                          background-color: #fff1e2;
+                          background-image: url('./assets/images/use/bg-modal.svg');
+                          background-repeat: no-repeat;
+                          background-position: top center;
+                          background-size: cover;
+                        "
+                      >
+                        <div class="content">
+                          <div class="swiper swiper-accomodation-gallery">
+                            <div class="swiper-wrapper">
+                              <div class="swiper-slide">
+                                <div class="image">
+                                  <img
+                                    src="./assets/images/fac.png"
+                                    data-swiper-parallax="-5%"
+                                    alt=""
+                                  />
+                                </div>
+                              </div>
+                              <div class="swiper-slide">
+                                <div class="image">
+                                  <img
+                                    src="./assets/images/fac2.png"
+                                    data-swiper-parallax="-5%"
+                                    alt=""
+                                  />
+                                </div>
+                              </div>
+                              <div class="swiper-slide">
+                                <div class="image">
+                                  <img
+                                    src="./assets/images/fac.png"
+                                    data-swiper-parallax="-5%"
+                                    alt=""
+                                  />
+                                </div>
+                              </div>
+                              <div class="swiper-slide">
+                                <div class="image">
+                                  <img
+                                    src="./assets/images/fac.png"
+                                    data-swiper-parallax="-10%"
+                                    alt=""
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="swiper-operation">
+                            <div class="swiper-arrows">
+                              <div class="swiper-button-prev">
+                                <svg
+                                  width="24"
+                                  height="8"
+                                  viewBox="0 0 24 8"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M1 4L22 4"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                  />
+                                  <path
+                                    d="M19 7.5L23 4L19 0.5"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                </svg>
+                              </div>
+                              <div class="swiper-button-next">
+                                <svg
+                                  width="24"
+                                  height="8"
+                                  viewBox="0 0 24 8"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M1 4L22 4"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                  />
+                                  <path
+                                    d="M19 7.5L23 4L19 0.5"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                </svg>
+                              </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="detail-gallery">
+              <div class="swiper swiper-accomodation">
+                <div class="swiper-wrapper">
+                  <div
+                    class="swiper-slide"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalGallery-2"
+                  >
+                    <div class="image">
+                      <img
+                        src="./assets/images/fac.png"
+                        data-swiper-parallax="-5%"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalGallery-1"
+                  >
+                    <div class="image">
+                      <img
+                        src="./assets/images/fac2.png"
+                        data-swiper-parallax="-5%"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalGallery-1"
+                  >
+                    <div class="image">
+                      <img
+                        src="./assets/images/fac.png"
+                        data-swiper-parallax="-5%"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalGallery-1"
+                  >
+                    <div class="image">
+                      <img
+                        src="./assets/images/fac.png"
+                        data-swiper-parallax="-10%"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-operation">
+                <div class="swiper-arrows">
+                  <div class="swiper-button-prev">
+                    <svg
+                      width="24"
+                      height="8"
+                      viewBox="0 0 24 8"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1 4L22 4"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                      />
+                      <path
+                        d="M19 7.5L23 4L19 0.5"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="swiper-button-next">
+                    <svg
+                      width="24"
+                      height="8"
+                      viewBox="0 0 24 8"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1 4L22 4"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                      />
+                      <path
+                        d="M19 7.5L23 4L19 0.5"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <div class="spacing-14x"></div>
       <section class="accommodation">
         <div class="accommodation-content">
