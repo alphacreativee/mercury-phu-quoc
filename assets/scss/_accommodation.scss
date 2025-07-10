@@ -34,6 +34,7 @@
           aspect-ratio: 503 / 336;
           position: relative;
           overflow: hidden;
+          border-radius: 8px;
 
           &::after {
             content: "";
