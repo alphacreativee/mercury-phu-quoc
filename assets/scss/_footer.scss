@@ -78,6 +78,8 @@
         position: relative;
         color: var(--color-white);
         padding-bottom: 8px;
+        flex: 1;
+
         &::before {
           content: "";
           position: absolute;
