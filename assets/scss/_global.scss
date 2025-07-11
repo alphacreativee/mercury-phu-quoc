@@ -321,10 +321,28 @@
         opacity 0.4s ease;
       transform: scale(0);
       transform-origin: center;
+      &.talk,
+      &.wtf {
+        &:hover {
+          svg {
+            path {
+              &:nth-child(1) {
+                fill: var(--color-secondary);
+              }
+              &:nth-child(2) {
+                fill: var(--color-primary);
+              }
+            }
+          }
+        }
+      }
       &:hover {
         background-color: var(--color-primary);
         svg {
           path {
+            color: var(--color-secondary);
+          }
+          stroke {
             color: var(--color-secondary);
           }
         }
