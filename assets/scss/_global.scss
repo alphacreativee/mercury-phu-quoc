@@ -73,6 +73,27 @@
   font-size: 14px;
   line-height: 20px;
   color: var(--color-white);
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    &::before {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+    color: var(--color-primary);
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-secondary);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
   &.reverse {
     background-color: var(--color-white);
     color: var(--color-primary);
@@ -202,14 +223,14 @@
   }
   .swiper-pagination {
     bottom: unset;
-    top: 40px;
+    top: 23px;
     &-bullet {
       width: 48px;
       height: 2px;
       border-radius: 2px;
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 241, 226, 0.8);
       &-active {
-        background-color: var(--color-white);
+        background-color: var(--color-secondary);
       }
     }
   }

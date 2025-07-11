@@ -348,11 +348,13 @@ function distortionImg() {
 
       new hoverEffect({
         parent: wrapper,
-        intensity: 0.01,
+        intensity: 0.1,
         angle: 0,
         image1: imageSrc,
         image2: imageSrc,
-        displacementImage: "./assets/images/distortion/8.jpg",
+        speedIn: 1.2,
+        speedOut: 1.2,
+        displacementImage: "./assets/images/distortion/7.jpg",
       });
     }
   });
