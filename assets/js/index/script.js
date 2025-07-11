@@ -352,7 +352,7 @@ function distortionImg() {
         angle: 0,
         image1: imageSrc,
         image2: imageSrc,
-        displacementImage: "./assets/images/distortion/clouds.jpg",
+        displacementImage: "./assets/images/distortion/8.jpg",
       });
     }
   });
