@@ -400,6 +400,11 @@
         right: -50%;
       }
     }
+    .box-description {
+      @media (max-width: 991px) {
+        text-align: center;
+      }
+    }
   }
 }
 

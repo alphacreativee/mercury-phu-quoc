@@ -7,6 +7,15 @@
       transform: translateX(0);
       max-width: calc(6 / 12 * 100%);
       width: 100%;
+      @media (max-width: 991px) {
+        font-size: 28px;
+        line-height: 32px;
+        bottom: 40px;
+        max-width: calc(100% - 100px);
+        left: 50px;
+        right: 50px;
+        text-align: center;
+      }
     }
   }
   &-container {
