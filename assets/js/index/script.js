@@ -359,6 +359,16 @@ function distortionImg() {
     }
   });
 }
+function header() {
+  // toggle active icon menu
+  const hamburger = document.getElementById("hamburger");
+  const subMenu = document.getElementById("header-sub-menu");
+
+  hamburger.addEventListener("click", function () {
+    this.classList.toggle("active");
+    subMenu.classList.toggle("active");
+  });
+}
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
@@ -368,6 +378,7 @@ const init = () => {
   ctaMess();
   distortionImg();
   swiperAccommodation();
+  header();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body
