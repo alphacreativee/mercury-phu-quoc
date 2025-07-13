@@ -4,8 +4,17 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
+  @media (max-width: 991px) {
+    padding: 80px 24px;
+  }
   &-top {
     margin-bottom: 190px;
+    @media (max-width: 991px) {
+      .box-global {
+        grid-template-columns: 1fr;
+        gap: 64px;
+      }
+    }
   }
   &-bottom {
     .nav {
@@ -52,6 +61,10 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 80px 40px;
+      @media (max-width: 991px) {
+        grid-template-columns: 1fr;
+        gap: 64px;
+      }
     }
     &-img {
       position: relative;

@@ -369,6 +369,41 @@ function header() {
     subMenu.classList.toggle("active");
   });
 }
+function filterGalleryMobile() {
+  const filterContainer = document.querySelector(".filter-mobile");
+  if (!filterContainer) return;
+
+  const filterValue = filterContainer.querySelector(".filter-value-select");
+  const filterHead = filterContainer.querySelector(".filter-head");
+  const filterBody = filterContainer.querySelector(".filter-body");
+  const filterButtons = filterBody.querySelectorAll(".nav-link");
+
+  if (!filterValue || !filterHead || !filterBody || filterButtons.length === 0)
+    return;
+
+  // Toggle filter list visibility
+  filterValue.addEventListener("click", () => {
+    filterHead.classList.toggle("active");
+    filterBody.classList.toggle("active");
+  });
+
+  // Handle option click
+  filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const titleEl = btn.querySelector(".title-tab");
+      console.log(titleEl);
+
+      if (!titleEl) return;
+
+      const selectedText = titleEl.textContent.trim();
+      filterValue.textContent = selectedText;
+
+      // Close dropdown
+      filterHead.classList.remove("active");
+      filterBody.classList.remove("active");
+    });
+  });
+}
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
@@ -379,6 +414,7 @@ const init = () => {
   distortionImg();
   swiperAccommodation();
   header();
+  filterGalleryMobile();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body
