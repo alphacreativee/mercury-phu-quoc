@@ -404,6 +404,36 @@ function filterGalleryMobile() {
     });
   });
 }
+function animtionText() {
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  gsap.utils.toArray(".effect-line").forEach((description) => {
+    const splitDescription = new SplitText(description, {
+      type: "lines",
+      linesClass: "line",
+      mask: "lines",
+    });
+
+    gsap.fromTo(
+      splitDescription.lines,
+      {
+        yPercent: 100,
+        willChange: "transform",
+      },
+      {
+        yPercent: 0,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.05,
+
+        scrollTrigger: {
+          trigger: description,
+          start: "top 60%",
+          // markers: true,
+        },
+      }
+    );
+  });
+}
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
@@ -415,6 +445,7 @@ const init = () => {
   swiperAccommodation();
   header();
   filterGalleryMobile();
+  animtionText();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body
