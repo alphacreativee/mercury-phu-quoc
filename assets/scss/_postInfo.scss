@@ -45,6 +45,9 @@
       }
 
       .contact {
+        flex-direction: column;
+        gap: 24px;
+
         .item {
           gap: 8px;
         }
@@ -55,6 +58,15 @@
 
         .cta {
           width: max-content;
+
+          &-group {
+            gap: 24px;
+            flex-wrap: wrap;
+
+            &__item {
+              min-width: calc(50% - 12px);
+            }
+          }
         }
 
         .gallery {

@@ -107,7 +107,7 @@
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
   &.reverse {
-    background-color: var(--color-white);
+    background-color: var(--color-secondary);
     color: var(--color-primary);
   }
 }
