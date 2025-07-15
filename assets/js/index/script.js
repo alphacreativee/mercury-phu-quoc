@@ -135,13 +135,20 @@ function sectionAccommodation() {
     const isOffer = $slider.hasClass("offer-slider");
 
     new Swiper($slider[0], {
-      spaceBetween: 40,
-      slidesPerView: isOffer ? 2.5 : 3.3,
+      spaceBetween: 24,
+      slidesPerView: 1.2,
       speed: 1000,
-      slidesOffsetAfter: 80,
+      slidesOffsetAfter: 24,
       pagination: {
         el: $pagination[0],
         type: "progressbar",
+      },
+      breakpoints: {
+        991: {
+          spaceBetween: 40,
+          slidesPerView: isOffer ? 2.5 : 3.3,
+          slidesOffsetAfter: 80,
+        },
       },
       navigation: {
         prevEl: $prev[0],
@@ -434,6 +441,20 @@ function animtionText() {
     );
   });
 }
+function modalBookingMobile() {
+  const btnFind = document.querySelector(".button-find-room ");
+  const bookingMobile = document.querySelector(".banner-booking-mobile");
+  const btnBack = document.querySelector(".btn-back");
+
+  btnBack.addEventListener("click", function () {
+    btnFind.classList.remove("hide");
+    bookingMobile.classList.remove("active");
+  });
+  btnFind.addEventListener("click", function () {
+    this.classList.add("hide"); // `this` bây giờ trỏ đến btnFind
+    bookingMobile.classList.add("active");
+  });
+}
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
@@ -446,6 +467,7 @@ const init = () => {
   header();
   filterGalleryMobile();
   animtionText();
+  modalBookingMobile();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body

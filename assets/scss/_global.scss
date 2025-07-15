@@ -149,6 +149,10 @@
     max-width: 460px;
     transform: rotate(-9deg);
     text-align: center;
+    @media (max-width: 991px) {
+      right: 0;
+      bottom: -40px;
+    }
     .line {
       line-height: 1.25;
     }
@@ -426,7 +430,9 @@
   display: flex;
   align-items: flex-end;
   padding: 0 80px;
-
+  @media (max-width: 991px) {
+    padding: 0 24px;
+  }
   .swiper-pagination {
     margin-top: 40px;
     position: relative;

@@ -32,6 +32,58 @@
     </script>
   </head>
   <body>
+    <!-- booking mobile -->
+    <div class="banner-booking-mobile">
+      <form action="">
+        <div class="btn-back b2-font color-primary">
+          <img src="./assets/images/use/ic-arrow-left.svg" alt="" />
+          Quay lại
+        </div>
+        <div class="form-wrapper">
+          <div class="check-in">
+            <input
+              type="text"
+              name="CheckInDate"
+              id="check-in"
+              placeholder="Ngày đến"
+            />
+          </div>
+          <div class="check-out">
+            <input
+              type="text"
+              name="CheckOutDate"
+              id="check-out"
+              placeholder="Ngày đi"
+            />
+          </div>
+          <div class="people">
+            <div class="label">Người lớn</div>
+            <div class="select">
+              <div class="min">-</div>
+              <div class="val">0</div>
+              <div class="plus">+</div>
+            </div>
+          </div>
+          <div class="child">
+            <div class="label">Trẻ em</div>
+            <div class="select">
+              <div class="min">-</div>
+              <div class="val">0</div>
+              <div class="plus">+</div>
+            </div>
+          </div>
+        </div>
+        <button class="b2-font color-white text-uppercase global-button">
+          tìm phòng
+        </button>
+      </form>
+    </div>
+    <div class="button-find-room">
+      <button class="b2-font color-white text-uppercase global-button">
+        tìm phòng
+      </button>
+    </div>
+    <!-- end booking mobile -->
     <!-- layout -->
     <!-- header -->
     <script>
@@ -66,7 +118,7 @@
             >
               Phú Quốc Việt Nam
             </div>
-            <div class="banner-booking">
+            <div class="banner-booking d-none d-lg-flex">
               <form action="">
                 <div class="check-in">
                   <input
@@ -124,7 +176,7 @@
                   <div
                     class="introduce-tag tag font-tag color-blue-cyan f48-1 effect-line"
                   >
-                    Relax, embraced by the ocean
+                    Relax, embraced <br />by the ocean
                   </div>
                 </div>
                 <div
@@ -146,8 +198,8 @@
                 <img src="./assets/images/img1.png" alt="" />
               </div>
               <div class="introduce-highlight">
-                <h2 class="font-tag color-white f40-56">Khám phá</h2>
-                <p class="b1-font color-white">
+                <h2 class="font-tag color-secondary f40-56">Khám phá</h2>
+                <p class="b1-font color-secondary">
                   Mercury không chỉ mang đến không gian nghỉ dưỡng lý tưởng mà
                   còn chinh phục du khách bằng ẩm thực bản địa đặc sắc cùng lòng
                   hiếu khách nồng hậu của người Việt. Đây chính là điểm đến hoàn
@@ -426,7 +478,7 @@
         </div>
       </section>
       <div class="spacing-14x"></div>
-      <section class="destination">
+      <section class="destination d-none">
         <div class="destination-map">
           <div class="map">
             <img src="./assets/images/destination/map.jpg" alt="" />

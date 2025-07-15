@@ -141,3 +141,98 @@
     z-index: 3;
   }
 }
+.banner-booking-mobile {
+  position: fixed;
+  z-index: 20;
+  left: 0;
+  right: 0;
+  top: 48px;
+  height: calc(100svh - 48px);
+  background-color: var(--color-secondary);
+  display: flex;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  will-change: clip-path;
+  transition: all 0.3s ease;
+  clip-path: inset(100% 0 0 0);
+  &.active {
+    clip-path: inset(0 0 0 0);
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    .btn-back {
+      padding: 48px 24px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .form-wrapper {
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      input {
+        width: 100%;
+        border: none;
+        outline: none;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--color-primary);
+        font-size: 16px;
+        line-height: 24px;
+        color: var(--color-primary);
+        &::placeholder {
+          font-size: 16px;
+          line-height: 24px;
+          color: var(--color-primary);
+        }
+      }
+      .select {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        justify-content: flex-end;
+      }
+      .people,
+      .child {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+      .select .min,
+      .select .plus {
+        width: 32px;
+        height: 32px;
+        border-radius: 2px;
+        border: 1px solid var(--color-primary);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  button {
+    width: 100%;
+    border-radius: 0;
+  }
+}
+.button-find-room {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 21;
+  width: 100%;
+  &.hide {
+    pointer-events: none;
+  }
+  button {
+    width: 100%;
+    border-radius: 0;
+  }
+}

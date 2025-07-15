@@ -13,6 +13,9 @@
   }
   &-content {
     position: relative;
+    @media (max-width: 991px) {
+      margin-inline: auto;
+    }
   }
 
   &-description {
@@ -20,11 +23,17 @@
     margin: 0 auto;
     padding: 0 24px;
     text-align: center;
+    @media (max-width: 991px) {
+      max-width: 100%;
+    }
   }
   &-main {
     max-width: calc(100% - 160px);
     margin: 0 auto;
     position: relative;
+    @media (max-width: 991px) {
+      max-width: calc(100% - 48px);
+    }
   }
   &-highlight {
     position: absolute;
@@ -36,8 +45,19 @@
     border-radius: 8px;
     padding: 48px 32px;
     z-index: 2;
+    @media (max-width: 991px) {
+      max-width: calc(100% - 48px);
+      position: relative;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 32px;
+    }
     h2 {
       margin-bottom: 16px;
+      @media (max-width: 991px) {
+        font-size: 24px;
+      }
     }
   }
   &-img {
@@ -46,6 +66,9 @@
     width: 100%;
     aspect-ratio: 1440 / 720;
     position: relative;
+    @media (max-width: 991px) {
+      aspect-ratio: 327 / 184;
+    }
     &::before {
       content: "";
       position: absolute;
