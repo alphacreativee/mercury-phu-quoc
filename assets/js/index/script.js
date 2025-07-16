@@ -270,9 +270,11 @@ function swiperAccommodation() {
       .closest(".detail-gallery")
       .find(".swiper-button-next");
 
+    const sliderPerView = $(window).width() < 992 ? 1 : 2.5;
+
     // Initialize the main slider
     const swiperMain = new Swiper($slider[0], {
-      slidesPerView: 1,
+      slidesPerView: sliderPerView,
       spaceBetween: 24,
       slidesOffsetAfter: 24,
       speed: 1000,
@@ -323,8 +325,9 @@ function swiperAccommodation() {
           }
 
           // Initialize swiperGallery when modal opens for the first time
+          const sliderPerViewGallery = $(window).width() < 992 ? 1 : "auto";
           swiperGallery = new Swiper($gallery[0], {
-            slidesPerView: 1,
+            slidesPerView: sliderPerViewGallery,
             spaceBetween: 24,
             speed: 1000,
             parallax: true,
@@ -497,6 +500,8 @@ function modalBookingMobile() {
   const bookingMobile = document.querySelector(".banner-booking-mobile");
   const btnBack = document.querySelector(".btn-back");
 
+  if (!btnFind || !bookingMobile || !btnBack) return;
+
   btnBack.addEventListener("click", function () {
     btnFind.classList.remove("hide");
     bookingMobile.classList.remove("active");
@@ -521,10 +526,19 @@ const init = () => {
   modalBookingMobile();
 };
 preloadImages("img").then(() => {
-  // Once images are preloaded, remove the 'loading' indicator/class from the body
-
   init();
 });
+
+let isLinkClicked = false;
+$("a").on("click", function (e) {
+  if (this.href && !this.href.match(/^#/) && !this.href.match(/^javascript:/)) {
+    isLinkClicked = true;
+  }
+});
+
 $(window).on("beforeunload", function () {
-  $(window).scrollTop(0);
+  if (!isLinkClicked) {
+    $(window).scrollTop(0);
+  }
+  isLinkClicked = false;
 });

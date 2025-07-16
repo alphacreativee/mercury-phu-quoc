@@ -118,6 +118,13 @@
       background-color: var(--color-white);
     }
   }
+
+  &.color-secondary {
+    &::before {
+      background-color: var(--color-secondary);
+    }
+  }
+
   &:hover,
   &.active {
     &::before {

@@ -158,6 +158,7 @@
   .modal {
     &-dialog {
       max-width: 1440px;
+      width: calc(100% - 48px);
       height: 100%;
       display: flex;
       flex-direction: column;
