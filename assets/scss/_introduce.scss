@@ -6,6 +6,9 @@
   background-position: center;
   &-box {
     margin-bottom: 100px;
+    @media (max-width: 991px) {
+      margin-bottom: 64px;
+    }
   }
   &-heading {
     text-align: center;

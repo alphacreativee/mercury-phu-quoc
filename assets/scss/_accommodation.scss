@@ -4,6 +4,7 @@
     margin-bottom: 140px;
     @media (max-width: 991px) {
       padding: 0 24px;
+      margin-bottom: 40px;
     }
     .box {
       &-global {
@@ -23,10 +24,28 @@
       }
     }
   }
+  &.offer-sec {
+    .box-global {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+    }
+    .box-description {
+      margin-top: 72px;
+      margin-bottom: 40px;
+    }
+    .box-button {
+      margin-left: 0;
+    }
+  }
 
   &-slider {
     &__main {
-      padding-left: 24px;
+      padding-left: 80px;
+      @media (max-width: 991px) {
+        padding-left: 24px;
+      }
 
       .accommodation-card {
         .item-image {
