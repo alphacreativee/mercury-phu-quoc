@@ -25,18 +25,20 @@
     }
   }
   &.offer-sec {
-    .box-global {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0;
-    }
-    .box-description {
-      margin-top: 72px;
-      margin-bottom: 40px;
-    }
-    .box-button {
-      margin-left: 0;
+    @media (max-width: 991px) {
+      .box-global {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+      }
+      .box-description {
+        margin-top: 72px;
+        margin-bottom: 40px;
+      }
+      .box-button {
+        margin-left: 0;
+      }
     }
   }
 

@@ -6,6 +6,18 @@
     padding: 0;
     display: flex;
     flex-direction: column;
+    padding-bottom: 64px;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 24px;
+      right: 24px;
+      width: calc(100% - 48px);
+      height: 1px;
+      background-color: var(--color-primary);
+    }
   }
   &-map {
     position: relative;
@@ -46,12 +58,23 @@
     @media (max-width: 991px) {
       display: flex;
       overflow-x: scroll;
+      gap: 16px;
+      padding-left: 24px;
+      padding-right: 24px;
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
   &-item {
     display: flex;
     gap: 32px;
     align-items: flex-start;
+    @media (max-width: 991px) {
+      flex-direction: column;
+      gap: 12px;
+      min-width: 155px;
+    }
     .locale {
       margin-bottom: 8px;
     }
