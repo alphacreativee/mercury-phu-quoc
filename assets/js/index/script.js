@@ -511,6 +511,54 @@ function modalBookingMobile() {
     bookingMobile.classList.add("active");
   });
 }
+
+function itemParallax() {
+  if ($(".js-parallax").length < 1 || $(".image-parallax").length < 1) return;
+
+  gsap.utils.toArray(".js-parallax").forEach((wrap) => {
+    const y = parseFloat(wrap.getAttribute("data-y")) || 100;
+    const direction = wrap.getAttribute("data-direction") || "up";
+
+    const fromY = direction === "down" ? -y : y;
+
+    gsap.fromTo(
+      wrap,
+      { y: fromY },
+      {
+        y: 0,
+        scrollTrigger: {
+          trigger: wrap,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+          ease: "power4",
+          delay: 0.2
+          // markers: true
+        }
+      }
+    );
+  });
+
+  document.querySelectorAll(".image-parallax").forEach((section) => {
+    const media = section.querySelector("img, video");
+
+    if (!media) return;
+
+    gsap.set(media, { yPercent: 10 });
+
+    gsap.to(media, {
+      yPercent: -10,
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+  });
+}
+
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
@@ -524,6 +572,7 @@ const init = () => {
   filterGalleryMobile();
   animtionText();
   modalBookingMobile();
+  itemParallax();
 };
 preloadImages("img").then(() => {
   init();
