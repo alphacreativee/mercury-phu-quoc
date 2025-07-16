@@ -426,7 +426,9 @@
   background-color: var(--color-primary);
   margin: 0 auto;
   width: calc(100% - 160px);
-
+  @media (max-width: 991px) {
+    width: calc(100% - 48px);
+  }
   &.color-secondary {
     background-color: var(--color-secondary);
   }

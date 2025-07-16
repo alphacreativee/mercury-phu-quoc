@@ -272,9 +272,9 @@ function swiperAccommodation() {
 
     // Initialize the main slider
     const swiperMain = new Swiper($slider[0], {
-      slidesPerView: 2.5,
-      spaceBetween: 16,
-      slidesOffsetAfter: 80,
+      slidesPerView: 1,
+      spaceBetween: 24,
+      slidesOffsetAfter: 24,
       speed: 1000,
       parallax: true,
       pagination: {
@@ -324,11 +324,11 @@ function swiperAccommodation() {
 
           // Initialize swiperGallery when modal opens for the first time
           swiperGallery = new Swiper($gallery[0], {
-            slidesPerView: "auto",
-            spaceBetween: 40,
+            slidesPerView: 1,
+            spaceBetween: 24,
             speed: 1000,
             parallax: true,
-            centeredSlides: true,
+            // centeredSlides: true,
             pagination: {
               el: $paginationG[0],
               type: "progressbar"
@@ -336,6 +336,12 @@ function swiperAccommodation() {
             navigation: {
               prevEl: $prevG[0],
               nextEl: $nextG[0]
+            },
+            breakpoints: {
+              991: {
+                spaceBetween: 40,
+                slidesPerView: "auto"
+              }
             },
             on: {
               slideChange: function () {
