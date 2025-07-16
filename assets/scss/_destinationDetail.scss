@@ -2,12 +2,24 @@
   .detail-wrapper {
     padding: 0 80px;
 
+    @media (max-width: 991px) {
+      padding: 0 24px;
+    }
+
     .col-content {
       padding-right: calc(100% / 12);
+
+      @media (max-width: 991px) {
+        padding: 0;
+      }
     }
 
     .col-media {
       height: max-content;
+
+      @media (max-width: 991px) {
+        margin-top: 40px;
+      }
 
       .swiper {
         width: 100%;
@@ -32,6 +44,9 @@
     }
 
     .col-form {
+      @media (max-width: 991px) {
+        margin-top: 40px;
+      }
       .form-wrapper {
         padding: 40px;
         background-color: var(--color-secondary);
@@ -103,6 +118,16 @@
 
           .item {
             gap: 16px;
+
+            @media (max-width: 991px) {
+              .icon {
+                min-width: 20px;
+
+                img {
+                  margin: 0 auto;
+                }
+              }
+            }
           }
         }
       }
@@ -110,6 +135,11 @@
 
     .excerpt {
       margin-top: 40px;
+
+      @media (max-width: 991px) {
+        font-size: 18px;
+        line-height: 26px;
+      }
     }
 
     .content {
@@ -117,6 +147,10 @@
 
       &.content-offer {
         margin-top: 80px;
+
+        @media (max-width: 991px) {
+          margin-top: 28px;
+        }
       }
 
       .accordion {
@@ -126,6 +160,12 @@
           color: var(--color-primary);
           background-color: transparent;
           box-shadow: unset;
+
+          @media (max-width: 991px) {
+            padding: 12px 0;
+            font-size: 18px;
+            line-height: 26px;
+          }
 
           &::after {
             width: 7px;
@@ -146,6 +186,10 @@
         .accordion-body {
           padding: 0;
           padding-bottom: 40px;
+
+          @media (max-width: 991px) {
+            padding-bottom: 24px;
+          }
 
           p {
             font-size: 16px;
@@ -176,7 +220,12 @@
       h4 {
         &:not(:first-child) {
           margin-top: 40px;
+
+          @media (max-width: 991px) {
+            margin-top: 24px;
+          }
         }
+
         margin-bottom: 0;
         font-size: 16px;
         line-height: 24px;

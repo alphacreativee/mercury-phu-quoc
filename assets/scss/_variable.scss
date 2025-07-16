@@ -97,6 +97,10 @@ a {
 }
 .spacing-12x {
   height: 120px;
+
+  @media (max-width: 991px) {
+    height: 64px;
+  }
 }
 .spacing-80 {
   height: 80px;

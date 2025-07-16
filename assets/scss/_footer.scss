@@ -45,7 +45,7 @@
         li {
           a {
             &:hover {
-              color: var(--color-white);
+              color: var(--color-secondary);
             }
           }
         }
@@ -78,7 +78,7 @@
   }
   &-top {
     padding-bottom: 64px;
-    border-bottom: 1px solid var(--color-white);
+    border-bottom: 1px solid var(--color-secondary);
     @media (max-width: 991px) {
       padding-bottom: 40px;
       border-color: rgba(255, 255, 255, 0.2);
@@ -122,7 +122,7 @@
       gap: 24px;
       .field {
         position: relative;
-        color: var(--color-white);
+        color: var(--color-secondary);
         padding-bottom: 8px;
         flex: 1;
 
@@ -133,7 +133,7 @@
           left: 0;
           width: 100%;
           height: 1px;
-          background-color: var(--color-white);
+          background-color: var(--color-secondary);
         }
       }
       input {
@@ -142,19 +142,19 @@
         border: none;
         font-size: 16px;
         line-height: 24px;
-        color: var(--color-white);
+        color: var(--color-secondary);
         width: 100%;
         &::placeholder {
           font-size: 16px;
           line-height: 24px;
-          color: var(--color-white);
+          color: var(--color-secondary);
         }
       }
       button {
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        border: 1px solid var(--color-white);
+        border: 1px solid var(--color-secondary);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -189,7 +189,7 @@
       li {
         a {
           &:hover {
-            color: var(--color-white);
+            color: var(--color-secondary);
           }
         }
       }

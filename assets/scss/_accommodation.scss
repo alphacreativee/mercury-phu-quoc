@@ -1,4 +1,13 @@
 .accommodation {
+  &.event {
+    .box-title {
+      .tag {
+        max-width: 400px;
+        // right: 10px;
+      }
+    }
+  }
+
   &-content {
     padding: 0 80px;
     margin-bottom: 140px;
