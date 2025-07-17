@@ -97,7 +97,51 @@ function bookingForm() {
         calendar.style.top = rect.bottom + window.scrollY + "px";
         calendar.style.left = rect.left + window.scrollX + "px";
       }
-    }
+    },
+  });
+
+  // Counter functionality
+  document.querySelectorAll(".people, .child").forEach((section) => {
+    const minus = section.querySelector(".min");
+    const plus = section.querySelector(".plus");
+    const val = section.querySelector(".val");
+
+    plus.onclick = () => {
+      const current = parseInt(val.textContent);
+      val.textContent = Math.min(current + 1, 10);
+      minus.style.opacity = val.textContent > 0 ? "1" : "0.5";
+    };
+
+    minus.onclick = () => {
+      const current = parseInt(val.textContent);
+      const newVal = Math.max(current - 1, 0);
+      val.textContent = newVal;
+      minus.style.opacity = newVal > 0 ? "1" : "0.5";
+    };
+  });
+}
+function bookingFormMobile() {
+  if (!document.querySelector(".banner-booking-mobile")) return;
+
+  var lightPick2 = new Lightpick({
+    field: document.getElementById("check-in-mobile"),
+    secondField: document.getElementById("check-out-mobile"),
+    singleDate: false,
+    minDate: moment().startOf("now"),
+    numberOfMonths: 2,
+    onOpen: function () {
+      var input = lightPick2._opts.field;
+      var rect = input.getBoundingClientRect();
+      var calendar = lightPick2.el;
+      if (rect.top >= window.innerHeight / 2) {
+        calendar.style.top =
+          rect.top + window.scrollY - calendar.offsetHeight + "px";
+        calendar.style.left = rect.left + window.scrollX + "px";
+      } else {
+        calendar.style.top = rect.bottom + window.scrollY + "px";
+        calendar.style.left = rect.left + window.scrollX + "px";
+      }
+    },
   });
 
   // Counter functionality
@@ -141,19 +185,19 @@ function sectionAccommodation() {
       slidesOffsetAfter: 24,
       pagination: {
         el: $pagination[0],
-        type: "progressbar"
+        type: "progressbar",
       },
       breakpoints: {
         991: {
           spaceBetween: 40,
           slidesPerView: isOffer ? 2.5 : 3.3,
-          slidesOffsetAfter: 80
-        }
+          slidesOffsetAfter: 80,
+        },
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0]
-      }
+        nextEl: $next[0],
+      },
     });
   });
 }
@@ -167,11 +211,11 @@ function swiperFacility() {
       speed: 1500,
       loop: true,
       autoplay: {
-        delay: 3000
+        delay: 3000,
       },
       pagination: {
         el: el.querySelector(".swiper-pagination"),
-        clickable: true
+        clickable: true,
       },
       on: {
         init(swiper) {
@@ -244,8 +288,8 @@ function swiperFacility() {
               slideInner.style.transition = `${speed}ms ${easing}`;
             }
           });
-        }
-      }
+        },
+      },
     });
   });
 }
@@ -281,12 +325,12 @@ function swiperAccommodation() {
       parallax: true,
       pagination: {
         el: $pagination[0],
-        type: "progressbar"
+        type: "progressbar",
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0]
-      }
+        nextEl: $next[0],
+      },
     });
 
     // Handle modal gallery slider
@@ -334,17 +378,17 @@ function swiperAccommodation() {
             // centeredSlides: true,
             pagination: {
               el: $paginationG[0],
-              type: "progressbar"
+              type: "progressbar",
             },
             navigation: {
               prevEl: $prevG[0],
-              nextEl: $nextG[0]
+              nextEl: $nextG[0],
             },
             breakpoints: {
               991: {
                 spaceBetween: 40,
-                slidesPerView: "auto"
-              }
+                slidesPerView: "auto",
+              },
             },
             on: {
               slideChange: function () {
@@ -358,8 +402,8 @@ function swiperAccommodation() {
                 $gallery
                   .removeClass("swiper-hidden")
                   .addClass("swiper-visible");
-              }
-            }
+              },
+            },
           });
 
           // Force Swiper to update immediately after initialization
@@ -395,7 +439,7 @@ function ctaMess() {
       self.direction === 1
         ? $("#cta-mess").addClass("hide")
         : $("#cta-mess").removeClass("hide");
-    }
+    },
   });
 }
 function distortionImg() {
@@ -415,7 +459,7 @@ function distortionImg() {
         image2: imageSrc,
         speedIn: 1.2,
         speedOut: 1.2,
-        displacementImage: "./assets/images/distortion/7.jpg"
+        displacementImage: "./assets/images/distortion/7.jpg",
       });
     }
   });
@@ -471,14 +515,14 @@ function animtionText() {
     const splitDescription = new SplitText(description, {
       type: "lines",
       linesClass: "line",
-      mask: "lines"
+      mask: "lines",
     });
 
     gsap.fromTo(
       splitDescription.lines,
       {
         yPercent: 100,
-        willChange: "transform"
+        willChange: "transform",
       },
       {
         yPercent: 0,
@@ -488,9 +532,9 @@ function animtionText() {
 
         scrollTrigger: {
           trigger: description,
-          start: "top 60%"
+          start: "top 60%",
           // markers: true,
-        }
+        },
       }
     );
   });
@@ -532,9 +576,9 @@ function itemParallax() {
           end: "bottom top",
           scrub: 1,
           ease: "power4",
-          delay: 0.2
+          delay: 0.2,
           // markers: true
-        }
+        },
       }
     );
   });
@@ -553,8 +597,8 @@ function itemParallax() {
         trigger: section,
         start: "top 80%",
         end: "bottom top",
-        scrub: true
-      }
+        scrub: true,
+      },
     });
   });
 }
@@ -588,7 +632,7 @@ function bookingOffer() {
         } catch (error) {
           console.error("Lỗi trong Lightpick onSelect:", error);
         }
-      }
+      },
     });
   }
 
@@ -602,7 +646,7 @@ function bookingOffer() {
       adult: form.find("input[name='adult']"),
       name: form.find("input[name='name']"),
       phone: form.find("input[name='phone']"),
-      email: form.find("input[name='email']")
+      email: form.find("input[name='email']"),
     };
 
     // Reset lỗi
@@ -632,7 +676,7 @@ function bookingOffer() {
         adult: fields.adult.val().trim(),
         name: fields.name.val().trim(),
         phone: fields.phone.val().trim(),
-        email: fields.email.val().trim()
+        email: fields.email.val().trim(),
       },
       beforeSend: function () {
         $(".contact-message").remove();
@@ -665,7 +709,7 @@ function bookingOffer() {
         form.append(
           '<span class="contact-message" style="color: red;">Có lỗi xảy ra, vui lòng thử lại sau.</span>'
         );
-      }
+      },
     });
   });
 }
@@ -685,6 +729,7 @@ const init = () => {
   modalBookingMobile();
   itemParallax();
   bookingOffer();
+  bookingFormMobile();
 };
 preloadImages("img").then(() => {
   init();
