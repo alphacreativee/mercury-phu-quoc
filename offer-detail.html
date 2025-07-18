@@ -261,7 +261,9 @@
                     />
                   </div>
                   <button
-                    type="submit"
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalSuccess"
                     class="global-button text-uppercase option-bg-white"
                   >
                     Đặt ngay
@@ -294,6 +296,31 @@
       </section>
       <div class="spacing-14x"></div>
     </main>
+
+    <div
+      class="modal fade"
+      id="modalSuccess"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="logo">
+              <img src="./assets/images/use/logo-white.svg" alt="" />
+            </div>
+            <div class="title h1-font heading-font color-secondary text-center">
+              Cám ơn Quý khách
+            </div>
+            <div class="desc color-secondary text-center">
+              Chúng tôi đã nhận yêu cầu, đội ngũ tư vấn sẽ liên hệ với Quý khách
+              để xác nhận thông tin
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- layout -->
     <script>
       fetch("./components/cta-mess.html")

@@ -51,9 +51,13 @@
         }
       }
       &-title {
-        margin-bottom: 40px;
+        margin-bottom: 32px;
         @media (max-width: 991px) {
           margin-bottom: 32px;
+        }
+
+        &.title-form {
+          margin-bottom: 24px;
         }
       }
       &-list {
@@ -107,7 +111,7 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 24px 40px;
-      margin-bottom: 75px;
+      margin-bottom: 40px;
 
       li {
         min-width: 12px;
