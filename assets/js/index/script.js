@@ -206,7 +206,34 @@ function sectionAccommodation() {
 function swiperFacility() {
   document.querySelectorAll(".swiper-facility").forEach((el) => {
     let hideTimeout;
+    const defaultDuration = 3000; // Thời gian autoplay cố định (1000ms)
 
+    // Hàm cập nhật progress bar
+    function updateProgressBars(swiper) {
+      var bullets = swiper.pagination.bullets;
+      bullets.forEach((bullet, index) => {
+        let progressBar = bullet.querySelector(".progress-bar");
+        if (index < swiper.realIndex) {
+          // Bullet của slide đã xem trước đó
+          bullet.classList.add("viewed");
+          progressBar.style.width = "100%";
+          progressBar.style.transition = "none";
+        } else if (index === swiper.realIndex) {
+          // Bullet của slide hiện tại: chạy progress bar từ 0% đến 100%
+          progressBar.style.width = "0%";
+          progressBar.style.transition = "none";
+          setTimeout(() => {
+            progressBar.style.width = "100%";
+            progressBar.style.transition = `width ${swiper.params.autoplay.delay}ms linear`;
+          }, 10);
+        } else {
+          // Bullet của slide chưa xem
+          bullet.classList.remove("viewed");
+          progressBar.style.width = "0%";
+          progressBar.style.transition = "none";
+        }
+      });
+    }
     const swiper = new Swiper(el, {
       slidesPerView: 1,
       watchSlidesProgress: true,
@@ -218,6 +245,12 @@ function swiperFacility() {
       pagination: {
         el: el.querySelector(".swiper-pagination"),
         clickable: true,
+        renderBullet: function (index, className) {
+          return `
+            <button class="${className}">
+              <span class="progress-bar"></span>
+            </button>`;
+        },
       },
       on: {
         init(swiper) {
@@ -240,6 +273,8 @@ function swiperFacility() {
         },
 
         slideChangeTransitionStart(swiper) {
+          swiper.params.autoplay.delay = defaultDuration; // Đặt lại delay
+          swiper.autoplay.start();
           swiper.slides.forEach((slide) => {
             const caption = slide.querySelector(".caption");
             if (caption) {
@@ -251,6 +286,7 @@ function swiperFacility() {
         },
 
         slideChangeTransitionEnd(swiper) {
+          updateProgressBars(swiper);
           const activeCaption =
             swiper.slides[swiper.activeIndex]?.querySelector(".caption");
           if (activeCaption) {
