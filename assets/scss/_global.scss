@@ -31,10 +31,10 @@
   }
   &-menu {
     position: absolute;
-    background-color: var(--color-primary);
+    background-color: var(--color-secondary);
     padding: 20px;
     width: max-content;
-    left: -20px;
+    left: 0;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
@@ -54,10 +54,13 @@
     display: flex;
     gap: 12px;
     align-items: center;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--color-primary);
     span {
       font-size: 14px;
       line-height: 20px;
-      color: var(--color-white);
+      color: var(--color-primary);
     }
     img {
       width: 24px;
@@ -73,7 +76,7 @@
   background-color: var(--color-primary);
   font-size: 14px;
   line-height: 20px;
-  color: var(--color-white);
+  color: var(--color-secondary);
   position: relative;
   z-index: 3;
   overflow: hidden;
@@ -263,6 +266,11 @@
       &-active {
         background-color: var(--color-secondary);
       }
+    }
+    .progress-bar {
+      background: var(--color-secondary);
+      width: 0;
+      height: 2px;
     }
   }
 }

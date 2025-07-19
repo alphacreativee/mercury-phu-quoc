@@ -38,19 +38,21 @@ function customDropdown() {
       item.addEventListener("click", function (e) {
         e.stopPropagation();
 
-        // Store current values from the button
+        // Get current values from the button
         const currentImg = valueSelect.querySelector("img").src;
         const currentText = valueSelect.querySelector("span").textContent;
-        const currentHtml = valueSelect.innerHTML;
 
-        // Store clicked item values
-        const clickedHtml = item.innerHTML;
+        // Get clicked item values
+        const clickedImg = item.querySelector("img").src;
+        const clickedText = item.querySelector("span").textContent;
 
         // Update the button with clicked item values
-        valueSelect.innerHTML = clickedHtml;
+        valueSelect.querySelector("img").src = clickedImg;
+        valueSelect.querySelector("span").textContent = clickedText;
 
         // Update the clicked item with the previous button values
-        item.innerHTML = `<img src="${currentImg}" alt="" /><span>${currentText}</span>`;
+        item.querySelector("img").src = currentImg;
+        item.querySelector("span").textContent = currentText;
 
         closeAllDropdowns();
       });

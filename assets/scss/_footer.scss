@@ -26,7 +26,7 @@
   &-grid {
     display: grid;
     grid-template-columns: 3fr 6.5fr 2.5fr;
-    gap: 24px;
+    gap: 0;
     @media (max-width: 991px) {
       grid-template-columns: 1fr;
       gap: 48px;
@@ -80,12 +80,22 @@
       }
     }
   }
+  &-right {
+    @media (min-width: 992px) {
+      padding-left: 48px;
+    }
+  }
   &-top {
-    padding-bottom: 64px;
+    padding-bottom: 26px;
     border-bottom: 1px solid var(--color-secondary);
     @media (max-width: 991px) {
       padding-bottom: 40px;
       border-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+  &-bct {
+    @media (min-width: 992px) {
+      padding-left: 48px;
     }
   }
   &-bottom {
