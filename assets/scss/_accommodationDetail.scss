@@ -156,9 +156,15 @@
   }
 
   .modal {
+    // &.modal-facility {
+    //   .modal-dialog {
+    //     max-width: 1440px;
+    //     width: calc(100% - 48px);
+    //   }
+    // }
+
     &-dialog {
-      max-width: 1440px;
-      width: calc(100% - 48px);
+      width: 100%;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -231,6 +237,10 @@
       .content {
         transform: none;
         display: block;
+
+        .swiper {
+          padding-left: 40px;
+        }
 
         .swiper-accomodation-gallery {
           width: 100%;
