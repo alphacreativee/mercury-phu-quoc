@@ -2,7 +2,7 @@
   --font-heading: "SVN-Domaine Display", sans-serif;
   --font-body: "SFU Futura", sans-serif;
   --font-tag: "Hermes", sans-serif;
-  --color-primary: #84161a;
+  --color-primary: #820003;
   --color-secondary: #fff1e2;
   --color-white: #ffffff;
   --color-blue-cyan: #008dc4;
@@ -46,6 +46,10 @@ a {
 .h0-font {
   font-size: 80px;
   line-height: 80px;
+  @media (max-width: 991px) {
+    font-size: 28px;
+    line-height: 32px;
+  }
 }
 .h1-font {
   font-size: 24px;
@@ -54,6 +58,10 @@ a {
 .b0-font {
   font-size: 18px;
   line-height: 26px;
+  @media (max-width: 991px) {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 .b1-font {
   font-size: 16px;
@@ -77,15 +85,28 @@ a {
 .f48-1 {
   font-size: 48px;
   line-height: 1;
+  @media (max-width: 991px) {
+    font-size: 24px;
+  }
 }
 .spacing-14x {
   height: 140px;
+  @media (max-width: 991px) {
+    height: 64px;
+  }
 }
 .spacing-12x {
   height: 120px;
+
+  @media (max-width: 991px) {
+    height: 64px;
+  }
 }
 .spacing-80 {
   height: 80px;
+  @media (max-width: 991px) {
+    height: 64px;
+  }
 }
 .spacing-1x {
   height: 100px;

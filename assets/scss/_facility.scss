@@ -1,20 +1,34 @@
 .facility {
   padding: 140px 80px;
   background-color: var(--color-secondary);
+  @media (max-width: 991px) {
+    padding: 64px 24px;
+  }
   &-top {
     display: flex;
     justify-content: center;
     margin-bottom: 140px;
+    @media (max-width: 991px) {
+      margin-bottom: 72px;
+    }
   }
   &-bottom {
     display: flex;
     gap: 40px;
+    @media (max-width: 991px) {
+      flex-direction: column;
+    }
   }
   .col-left {
     width: calc(7 / 12 * 100%);
     height: max-content;
     position: sticky;
     top: 80px;
+    @media (max-width: 991px) {
+      position: static;
+      width: 100%;
+      aspect-ratio: 327 / 540;
+    }
     // display: flex;
     // align-items: center;
     // justify-content: center;
@@ -22,6 +36,9 @@
   }
   .col-right {
     width: calc(5 / 12 * 100%);
+    @media (max-width: 991px) {
+      width: 100%;
+    }
   }
   &-description {
     position: absolute;
@@ -30,6 +47,11 @@
     left: 40px;
     right: 40px;
     max-width: 570px;
+    @media (max-width: 991px) {
+      left: 32px;
+      right: 32px;
+      bottom: 32px;
+    }
     h2 {
       margin-bottom: 32px;
     }
@@ -37,10 +59,10 @@
       width: max-content;
       &::before,
       &::after {
-        background-color: var(--color-white);
+        background-color: var(--color-secondary);
       }
       &:hover {
-        color: var(--color-white);
+        color: var(--color-secondary);
       }
     }
   }
@@ -51,6 +73,9 @@
     border-radius: 12px;
     overflow: hidden;
     position: relative;
+    @media (max-width: 991px) {
+      aspect-ratio: 327 / 540;
+    }
     &::before {
       content: "";
       position: absolute;
@@ -68,6 +93,9 @@
     display: flex;
     flex-direction: column;
     gap: 80px;
+    @media (max-width: 991px) {
+      gap: 40px;
+    }
   }
   &-img {
     width: 100%;
@@ -76,6 +104,9 @@
     overflow: hidden;
     margin-bottom: 24px;
     position: relative;
+    @media (max-width: 991px) {
+      aspect-ratio: 327 / 220;
+    }
     &::before {
       content: "";
       position: absolute;

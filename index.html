@@ -32,6 +32,58 @@
     </script>
   </head>
   <body>
+    <!-- booking mobile -->
+    <div class="banner-booking-mobile">
+      <form action="">
+        <div class="btn-back b2-font color-primary">
+          <img src="./assets/images/use/ic-arrow-left.svg" alt="" />
+          Quay lại
+        </div>
+        <div class="form-wrapper">
+          <div class="check-in">
+            <input
+              type="text"
+              name="CheckInDate"
+              id="check-in-mobile"
+              placeholder="Ngày đến"
+            />
+          </div>
+          <div class="check-out">
+            <input
+              type="text"
+              name="CheckOutDate"
+              id="check-out-mobile"
+              placeholder="Ngày đi"
+            />
+          </div>
+          <div class="people">
+            <div class="label">Người lớn</div>
+            <div class="select">
+              <div class="min">-</div>
+              <div class="val">0</div>
+              <div class="plus">+</div>
+            </div>
+          </div>
+          <div class="child">
+            <div class="label">Trẻ em</div>
+            <div class="select">
+              <div class="min">-</div>
+              <div class="val">0</div>
+              <div class="plus">+</div>
+            </div>
+          </div>
+        </div>
+        <button class="b2-font color-white text-uppercase global-button">
+          tìm phòng
+        </button>
+      </form>
+    </div>
+    <div class="button-find-room">
+      <button class="b2-font color-white text-uppercase global-button">
+        tìm phòng
+      </button>
+    </div>
+    <!-- end booking mobile -->
     <!-- layout -->
     <!-- header -->
     <script>
@@ -114,15 +166,19 @@
               <div class="introduce-box">
                 <div class="introduce-content box-title">
                   <h1
-                    class="introduce-heading h0-font color-primary font-heading text-uppercase"
+                    class="introduce-heading h0-font color-primary font-heading text-uppercase effect-line"
                   >
                     Mercury Phu Quoc Resort & Villas
                   </h1>
-                  <div class="introduce-tag tag font-tag color-blue-cyan f48-1">
-                    Relax, embraced by the ocean
+                  <div
+                    class="introduce-tag tag font-tag color-blue-cyan f48-1 effect-line"
+                  >
+                    Relax, embraced <br />by the ocean
                   </div>
                 </div>
-                <div class="introduce-description b0-font color-primary">
+                <div
+                  class="introduce-description b0-font color-primary effect-line"
+                >
                   Tọa lạc trên Bãi Trường, Mercury Phu Quoc Resort & Villas là
                   khu nghỉ dưỡng cao cấp, thiên đường nhiệt đới với hệ thống
                   biệt thự tách biệt. Mỗi căn biệt thự là sự kết hợp hài hòa
@@ -135,12 +191,15 @@
           </div>
           <div class="row g-0">
             <div class="introduce-main">
-              <div class="introduce-img">
+              <div class="introduce-img image-parallax">
                 <img src="./assets/images/img1.png" alt="" />
               </div>
-              <div class="introduce-highlight">
-                <h2 class="font-tag color-white f40-56">Khám phá</h2>
-                <p class="b1-font color-white">
+              <div
+                class="introduce-highlight js-parallax"
+                data-direction="down"
+              >
+                <h2 class="font-tag color-secondary f40-56">Khám phá</h2>
+                <p class="b1-font color-secondary">
                   Mercury không chỉ mang đến không gian nghỉ dưỡng lý tưởng mà
                   còn chinh phục du khách bằng ẩm thực bản địa đặc sắc cùng lòng
                   hiếu khách nồng hậu của người Việt. Đây chính là điểm đến hoàn
@@ -343,23 +402,23 @@
                 <div class="swiper-pagination"></div>
               </div>
               <div class="facility-description">
-                <h2 class="h1-font color-white font-heading">
+                <h2 class="h1-font color-secondary font-heading">
                   Khám phá những trải nghiệm nghỉ dưỡng phong phú với thật nhiều
                   tiện ích độc quyền chỉ có tại Mercury Phu Quoc Resort & Villas
                 </h2>
                 <a
                   href=""
-                  class="btn-general text-uppercase d-flex align-items-center color-white b2-font font-body"
+                  class="btn-general text-uppercase d-flex align-items-center color-secondary b2-font font-body"
                 >
                   Xem tất cả
 
                   <div class="icon">
                     <img
-                      src="./assets/images/use/ic-arrow-right-white.svg"
+                      src="./assets/images/use/ic-arrow-right-sec.svg"
                       alt=""
                     />
                     <img
-                      src="./assets/images/use/ic-arrow-right-white.svg"
+                      src="./assets/images/use/ic-arrow-right-sec.svg"
                       alt=""
                     />
                   </div>
@@ -420,16 +479,38 @@
       </section>
       <div class="spacing-14x"></div>
       <section class="destination">
+        <div class="destination-title d-block d-lg-none">
+          <div class="box-global">
+            <div class="box-title">
+              <h1 class="h0-font color-primary font-heading text-uppercase">
+                ĐIỂM ĐẾN
+              </h1>
+              <div class="tag font-tag color-blue-cyan f48-1">
+                Explore<br />
+                Phu Quoc
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="destination-map">
           <div class="map">
-            <img src="./assets/images/destination/map.jpg" alt="" />
+            <img
+              src="./assets/images/destination/map.jpg"
+              alt=""
+              class="d-none d-lg-block"
+            />
+            <img
+              src="./assets/images/destination/map-mobile.png"
+              alt=""
+              class="d-block d-lg-none"
+            />
           </div>
           <a href="" target="_blank" class="ic-gg">
             <img src="./assets/images/destination/ic-gg-map.svg" alt="" />
           </a>
         </div>
         <div class="destination-point">
-          <div class="destination-title">
+          <div class="destination-title d-none d-lg-block">
             <div class="box-global">
               <div class="box-title">
                 <h1 class="h0-font color-primary font-heading text-uppercase">
@@ -562,7 +643,7 @@
         </div>
       </section>
       <div class="spacing-14x"></div>
-      <section class="accommodation">
+      <section class="accommodation offer-sec">
         <div class="accommodation-content">
           <div class="box-global">
             <div class="box-title">
