@@ -111,6 +111,15 @@
   &.reverse {
     background-color: var(--color-secondary);
     color: var(--color-primary);
+    border: 1px solid var(--color-secondary);
+
+    &:hover {
+      color: var(--color-secondary);
+    }
+
+    &::before {
+      background-color: var(--color-primary);
+    }
   }
 }
 .link-underline {
@@ -151,6 +160,11 @@
 .box-title {
   position: relative;
   width: fit-content;
+
+  @media (max-width: 991px) {
+    min-width: 200px;
+  }
+
   .tag {
     position: absolute;
     bottom: -60px;
@@ -438,6 +452,10 @@
     .box-title {
       .tag {
         right: -50%;
+
+        @media (max-width: 991px) {
+          right: -40%;
+        }
       }
     }
     .box-description {

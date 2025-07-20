@@ -61,6 +61,10 @@
         margin: 0 auto;
         max-width: 100%;
 
+        @media (max-width: 991px) {
+          padding: 24px 16px;
+        }
+
         .title {
           margin-bottom: 40px;
         }
@@ -114,13 +118,17 @@
 
         button {
           width: 100%;
-          margin-top: 8px;
+          margin-top: 40px;
         }
 
         .form-bottom {
           margin-top: 24px;
           gap: 12px;
           flex-wrap: wrap;
+
+          @media (max-width: 991px) {
+            margin-top: 40px;
+          }
 
           .item {
             gap: 16px;
@@ -141,6 +149,7 @@
 
     .excerpt {
       margin-top: 40px;
+      text-align: justify;
 
       @media (max-width: 991px) {
         font-size: 18px;
@@ -213,7 +222,7 @@
 
           ul {
             list-style: disc;
-            padding-left: 16px;
+            padding-left: 22px;
           }
         }
       }

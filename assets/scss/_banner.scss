@@ -1,6 +1,18 @@
 .banner {
   overflow: hidden;
 
+  &:not(.has-booking-form) {
+    .banner-container {
+      @media (max-width: 991px) {
+        max-height: 640px;
+      }
+
+      @media (max-width: 767px) {
+        max-height: 640px;
+      }
+    }
+  }
+
   &-hero-clip {
     background-image: url("../../images/banner-2.jpg");
     background-position: center;
@@ -36,6 +48,7 @@
     width: 100%;
     height: 100svh;
     position: relative;
+
     // &::before {
     //   content: "";
     //   position: absolute;
@@ -174,9 +187,17 @@
     z-index: 5;
     h4 {
       font-size: 48px;
+
+      @media (max-width: 991px) {
+        font-size: 24px;
+      }
     }
     h1 {
       font-size: 80px;
+
+      @media (max-width: 991px) {
+        font-size: 36px;
+      }
     }
   }
 }

@@ -31,6 +31,19 @@
     .dropdown-custom-item {
       text-transform: uppercase;
     }
+
+    .dropdown-custom-menu {
+      left: -20px;
+    }
+
+    .dropdown-custom-item {
+      &:hover {
+        span::before {
+          transform: scaleX(1);
+          transform-origin: bottom left;
+        }
+      }
+    }
   }
   &-menu {
     display: grid;

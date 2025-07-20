@@ -90,6 +90,7 @@
 
       .swiper {
         padding-left: 80px;
+        padding-right: 80px;
         @media (max-width: 991px) {
           padding-left: 24px;
           padding-right: 24px;
@@ -239,7 +240,8 @@
         display: block;
 
         .swiper {
-          padding-left: 40px;
+          padding-left: 80px;
+          padding-right: 80px;
         }
 
         .swiper-accomodation-gallery {

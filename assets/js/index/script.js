@@ -209,18 +209,28 @@ function swiperAccommodation() {
 
   if ($sliders.length < 1) return;
 
-  $sliders.each(function () {
-    const $slider = $(this);
-    const $section = $slider.closest("section.accommodation-detail");
+  // Iterate through each accommodation-detail section
+  $(".accommodation-detail").each(function () {
+    const $section = $(this);
+    const $slider = $section.find(".swiper-accomodation");
 
-    const $pagination = $section.find(".swiper-pagination");
-    const $prev = $section.find(".swiper-button-prev");
-    const $next = $section.find(".swiper-button-next");
+    const $pagination = $slider
+      .closest(".detail-gallery")
+      .find(".swiper-pagination");
+    const $prev = $slider
+      .closest(".detail-gallery")
+      .find(".swiper-button-prev");
+    const $next = $slider
+      .closest(".detail-gallery")
+      .find(".swiper-button-next");
 
-    new Swiper($slider[0], {
-      slidesPerView: 2.5,
-      spaceBetween: 16,
-      slidesOffsetAfter: 80,
+    const sliderPerView = $(window).width() < 992 ? 1 : 2.5;
+
+    // Initialize the main slider
+    const swiperMain = new Swiper($slider[0], {
+      slidesPerView: sliderPerView,
+      spaceBetween: 24,
+      slidesOffsetAfter: 0,
       speed: 1000,
       parallax: true,
       pagination: {
@@ -232,6 +242,62 @@ function swiperAccommodation() {
         nextEl: $next[0]
       }
     });
+
+    // Handle modal gallery slider
+    const modalId = $slider.find(".swiper-slide").first().data("bs-target"); // e.g., "#modalGallery-1"
+    const $modal = $(modalId);
+
+    if ($modal.length) {
+      let swiperGallery = null;
+      let syncing = false;
+
+      $slider.find(".swiper-slide").on("click", function () {
+        const slideIndex = $(this).index();
+        $modal.modal("show");
+      });
+
+      const $gallery = $modal.find(".swiper-accomodation-gallery");
+      const $paginationG = $modal.find(".swiper-pagination");
+      const $prevG = $modal.find(".swiper-button-prev");
+      const $nextG = $modal.find(".swiper-button-next");
+
+      // Initialize swiperGallery when modal opens for the first time
+      const sliderPerViewGallery = $(window).width() < 992 ? 1 : "auto";
+      swiperGallery = new Swiper($gallery[0], {
+        slidesPerView: sliderPerViewGallery,
+        slidesOffsetAfter: 0,
+        spaceBetween: 24,
+        speed: 1000,
+        parallax: true,
+        // centeredSlides: true,
+        pagination: {
+          el: $paginationG[0],
+          type: "progressbar"
+        },
+        navigation: {
+          prevEl: $prevG[0],
+          nextEl: $nextG[0]
+        },
+        breakpoints: {
+          991: {
+            spaceBetween: 40,
+            slidesPerView: "auto"
+          }
+        },
+        on: {
+          slideChange: function () {
+            if (syncing) return;
+            syncing = true;
+            swiperMain.slideTo(swiperGallery.activeIndex, 0); // Sync main slider
+            syncing = false;
+          },
+          init: function () {
+            // Reveal Swiper after initialization
+            $gallery.removeClass("swiper-hidden").addClass("swiper-visible");
+          }
+        }
+      });
+    }
   });
 }
 
@@ -293,8 +359,11 @@ function loadingBanner() {
         }
       },
       onLeave: (self) => {
+        if ($("#cta-mess").length) {
+          $("#cta-mess").removeClass("hide");
+        }
+
         let start = self.start;
-        console.log(start);
 
         self.scroll(self.start);
         self.disable();
