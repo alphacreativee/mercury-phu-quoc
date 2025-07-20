@@ -271,7 +271,7 @@ function loadingBanner() {
       start: "top top",
       scrub: true,
       pin: true,
-      markers: true,
+      // markers: true,
       once: true,
       onUpdate: (self) => {
         if (self.progress === 1 && !classesRemoved) {
@@ -311,6 +311,7 @@ function loadingBanner() {
     0
   );
 }
+
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
@@ -327,6 +328,17 @@ preloadImages("img").then(() => {
 
   init();
 });
+
+let isLinkClicked = false;
+$("a").on("click", function (e) {
+  if (this.href && !this.href.match(/^#/) && !this.href.match(/^javascript:/)) {
+    isLinkClicked = true;
+  }
+});
+
 $(window).on("beforeunload", function () {
-  $(window).scrollTop(0);
+  if (!isLinkClicked) {
+    $(window).scrollTop(0);
+  }
+  isLinkClicked = false;
 });
