@@ -1,8 +1,4 @@
 import { preloadImages } from "../../libs/utils.js";
-
-("use strict");
-$ = jQuery;
-
 // setup lenis
 const lenis = new Lenis();
 lenis.on("scroll", ScrollTrigger.update);
@@ -42,21 +38,19 @@ function customDropdown() {
       item.addEventListener("click", function (e) {
         e.stopPropagation();
 
-        // Get current values from the button
+        // Store current values from the button
         const currentImg = valueSelect.querySelector("img").src;
         const currentText = valueSelect.querySelector("span").textContent;
+        const currentHtml = valueSelect.innerHTML;
 
-        // Get clicked item values
-        const clickedImg = item.querySelector("img").src;
-        const clickedText = item.querySelector("span").textContent;
+        // Store clicked item values
+        const clickedHtml = item.innerHTML;
 
         // Update the button with clicked item values
-        valueSelect.querySelector("img").src = clickedImg;
-        valueSelect.querySelector("span").textContent = clickedText;
+        valueSelect.innerHTML = clickedHtml;
 
         // Update the clicked item with the previous button values
-        item.querySelector("img").src = currentImg;
-        item.querySelector("span").textContent = currentText;
+        item.innerHTML = `<img src="${currentImg}" alt="" /><span>${currentText}</span>`;
 
         closeAllDropdowns();
       });
@@ -103,50 +97,6 @@ function bookingForm() {
         calendar.style.top = rect.bottom + window.scrollY + "px";
         calendar.style.left = rect.left + window.scrollX + "px";
       }
-    },
-  });
-
-  // Counter functionality
-  document.querySelectorAll(".people, .child").forEach((section) => {
-    const minus = section.querySelector(".min");
-    const plus = section.querySelector(".plus");
-    const val = section.querySelector(".val");
-
-    plus.onclick = () => {
-      const current = parseInt(val.textContent);
-      val.textContent = Math.min(current + 1, 10);
-      minus.style.opacity = val.textContent > 0 ? "1" : "0.5";
-    };
-
-    minus.onclick = () => {
-      const current = parseInt(val.textContent);
-      const newVal = Math.max(current - 1, 0);
-      val.textContent = newVal;
-      minus.style.opacity = newVal > 0 ? "1" : "0.5";
-    };
-  });
-}
-function bookingFormMobile() {
-  if (!document.querySelector(".banner-booking-mobile")) return;
-
-  var lightPick2 = new Lightpick({
-    field: document.getElementById("check-in-mobile"),
-    secondField: document.getElementById("check-out-mobile"),
-    singleDate: false,
-    minDate: moment().startOf("now"),
-    numberOfMonths: 2,
-    onOpen: function () {
-      var input = lightPick2._opts.field;
-      var rect = input.getBoundingClientRect();
-      var calendar = lightPick2.el;
-      if (rect.top >= window.innerHeight / 2) {
-        calendar.style.top =
-          rect.top + window.scrollY - calendar.offsetHeight + "px";
-        calendar.style.left = rect.left + window.scrollX + "px";
-      } else {
-        calendar.style.top = rect.bottom + window.scrollY + "px";
-        calendar.style.left = rect.left + window.scrollX + "px";
-      }
     }
   });
 
@@ -185,130 +135,45 @@ function sectionAccommodation() {
     const isOffer = $slider.hasClass("offer-slider");
 
     new Swiper($slider[0], {
-      spaceBetween: 24,
-      slidesPerView: 1.2,
+      spaceBetween: 40,
+      slidesPerView: isOffer ? 2.5 : 3.3,
       speed: 1000,
-      slidesOffsetAfter: 24,
+      slidesOffsetAfter: 80,
       pagination: {
         el: $pagination[0],
-        type: "progressbar",
-      },
-      breakpoints: {
-        991: {
-          spaceBetween: 40,
-          slidesPerView: isOffer ? 2.5 : 3.3,
-          slidesOffsetAfter: 80
-        }
+        type: "progressbar"
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0],
-      },
+        nextEl: $next[0]
+      }
     });
   });
 }
 function swiperFacility() {
-  document.querySelectorAll(".swiper-facility").forEach((el) => {
-    let hideTimeout;
-    const defaultDuration = 3000; // Thời gian autoplay cố định (1000ms)
+  let interleaveOffset = 0.9;
+  const swiperFacility = new Swiper(".swiper-facility", {
+    slidesPerView: 1,
+    watchSlidesProgress: true,
 
-    // Hàm cập nhật progress bar
-    function updateProgressBars(swiper) {
-      var bullets = swiper.pagination.bullets;
-      bullets.forEach((bullet, index) => {
-        let progressBar = bullet.querySelector(".progress-bar");
-        if (index < swiper.realIndex) {
-          // Bullet của slide đã xem trước đó
-          bullet.classList.add("viewed");
-          progressBar.style.width = "100%";
-          progressBar.style.transition = "none";
-        } else if (index === swiper.realIndex) {
-          // Bullet của slide hiện tại: chạy progress bar từ 0% đến 100%
-          progressBar.style.width = "0%";
-          progressBar.style.transition = "none";
-          setTimeout(() => {
-            progressBar.style.width = "100%";
-            progressBar.style.transition = `width ${swiper.params.autoplay.delay}ms linear`;
-          }, 10);
-        } else {
-          // Bullet của slide chưa xem
-          bullet.classList.remove("viewed");
-          progressBar.style.width = "0%";
-          progressBar.style.transition = "none";
-        }
-      });
-    }
-    const swiper = new Swiper(el, {
-      slidesPerView: 1,
-      watchSlidesProgress: true,
-      speed: 1500,
-      loop: true,
-      autoplay: {
-        delay: 3000
-      },
-      pagination: {
-        el: el.querySelector(".swiper-pagination"),
-        clickable: true,
-        renderBullet: function (index, className) {
-          return `
-            <button class="${className}">
-              <span class="progress-bar"></span>
-            </button>`;
-        }
-      },
-      on: {
-        init(swiper) {
-          swiper.slides.forEach((slide) => {
-            const caption = slide.querySelector(".caption");
-            if (caption) {
-              caption.style.opacity = "0";
-              caption.style.transition = "opacity 0.6s ease";
-            }
-          });
+    speed: 1500,
+    loop: true,
+    autoplay: {
+      delay: 3000
+    },
+    pagination: {
+      el: ".swiper-facility .swiper-pagination"
+    },
+    on: {
+      progress(swiper) {
+        swiper.slides.forEach((slide) => {
+          const slideProgress = slide.progress || 0;
+          const innerOffset = swiper.width * interleaveOffset;
+          const innerTranslate = slideProgress * innerOffset;
 
-          const activeCaption =
-            swiper.slides[swiper.activeIndex]?.querySelector(".caption");
-          if (activeCaption) {
-            activeCaption.style.opacity = "1";
-            hideTimeout = setTimeout(() => {
-              activeCaption.style.opacity = "0";
-            }, 2200);
-          }
-        },
-
-        slideChangeTransitionStart(swiper) {
-          swiper.params.autoplay.delay = defaultDuration; // Đặt lại delay
-          swiper.autoplay.start();
-          swiper.slides.forEach((slide) => {
-            const caption = slide.querySelector(".caption");
-            if (caption) {
-              caption.style.opacity = "0";
-            }
-          });
-
-          clearTimeout(hideTimeout);
-        },
-
-        slideChangeTransitionEnd(swiper) {
-          updateProgressBars(swiper);
-          const activeCaption =
-            swiper.slides[swiper.activeIndex]?.querySelector(".caption");
-          if (activeCaption) {
-            activeCaption.style.opacity = "1";
-            hideTimeout = setTimeout(() => {
-              activeCaption.style.opacity = "0";
-            }, 2200);
-          }
-        },
-
-        progress(swiper) {
-          swiper.slides.forEach((slide) => {
-            const slideProgress = slide.progress || 0;
-            const innerOffset = swiper.width * 0.9;
-            const innerTranslate = slideProgress * innerOffset;
-
+          if (!isNaN(innerTranslate)) {
             const slideInner = slide.querySelector(".box-img");
-            if (slideInner && !isNaN(innerTranslate)) {
+            if (slideInner) {
               slideInner.style.transform = `translate3d(${innerTranslate}px, 0, 0)`;
             }
           }
@@ -338,95 +203,29 @@ function swiperAccommodation() {
 
   if ($sliders.length < 1) return;
 
-  // Iterate through each accommodation-detail section
-  $(".accommodation-detail").each(function () {
-    const $section = $(this);
-    const $slider = $section.find(".swiper-accomodation");
+  $sliders.each(function () {
+    const $slider = $(this);
+    const $section = $slider.closest("section.accommodation-detail");
 
-    const $pagination = $slider
-      .closest(".detail-gallery")
-      .find(".swiper-pagination");
-    const $prev = $slider
-      .closest(".detail-gallery")
-      .find(".swiper-button-prev");
-    const $next = $slider
-      .closest(".detail-gallery")
-      .find(".swiper-button-next");
+    const $pagination = $section.find(".swiper-pagination");
+    const $prev = $section.find(".swiper-button-prev");
+    const $next = $section.find(".swiper-button-next");
 
-    const sliderPerView = $(window).width() < 992 ? 1 : 2.5;
-
-    // Initialize the main slider
-    const swiperMain = new Swiper($slider[0], {
-      slidesPerView: sliderPerView,
-      spaceBetween: 24,
-      slidesOffsetAfter: 24,
+    new Swiper($slider[0], {
+      slidesPerView: 2.5,
+      spaceBetween: 16,
+      slidesOffsetAfter: 80,
       speed: 1000,
       parallax: true,
       pagination: {
         el: $pagination[0],
-        type: "progressbar",
+        type: "progressbar"
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0],
-      },
+        nextEl: $next[0]
+      }
     });
-
-    // Handle modal gallery slider
-    const modalId = $slider.find(".swiper-slide").first().data("bs-target"); // e.g., "#modalGallery-1"
-    const $modal = $(modalId);
-
-    if ($modal.length) {
-      let swiperGallery = null;
-      let syncing = false;
-
-      $slider.find(".swiper-slide").on("click", function () {
-        const slideIndex = $(this).index();
-        $modal.modal("show");
-      });
-
-      const $gallery = $modal.find(".swiper-accomodation-gallery");
-      const $paginationG = $modal.find(".swiper-pagination");
-      const $prevG = $modal.find(".swiper-button-prev");
-      const $nextG = $modal.find(".swiper-button-next");
-
-      // Initialize swiperGallery when modal opens for the first time
-      const sliderPerViewGallery = $(window).width() < 992 ? 1 : "auto";
-      swiperGallery = new Swiper($gallery[0], {
-        slidesPerView: sliderPerViewGallery,
-        slidesOffsetAfter: 40,
-        spaceBetween: 24,
-        speed: 1000,
-        parallax: true,
-        // centeredSlides: true,
-        pagination: {
-          el: $paginationG[0],
-          type: "progressbar"
-        },
-        navigation: {
-          prevEl: $prevG[0],
-          nextEl: $nextG[0]
-        },
-        breakpoints: {
-          991: {
-            spaceBetween: 40,
-            slidesPerView: "auto"
-          }
-        },
-        on: {
-          slideChange: function () {
-            if (syncing) return;
-            syncing = true;
-            swiperMain.slideTo(swiperGallery.activeIndex, 0); // Sync main slider
-            syncing = false;
-          },
-          init: function () {
-            // Reveal Swiper after initialization
-            $gallery.removeClass("swiper-hidden").addClass("swiper-visible");
-          }
-        }
-      });
-    }
   });
 }
 
@@ -439,7 +238,7 @@ function ctaMess() {
       self.direction === 1
         ? $("#cta-mess").addClass("hide")
         : $("#cta-mess").removeClass("hide");
-    },
+    }
   });
 }
 function distortionImg() {
@@ -462,6 +261,56 @@ function distortionImg() {
     }
   });
 }
+function loadingBanner() {
+  let classesRemoved = false; // Biến để đảm bảo class chỉ xóa một lần
+  let lastScroll = 0;
+  var heightHero = $(".hero-sec").height();
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".banner-hero-clip",
+      start: "top top",
+      scrub: true,
+      pin: true,
+      markers: true,
+      once: true,
+      onUpdate: (self) => {
+        if (self.progress === 1 && !classesRemoved) {
+          document
+            .querySelector(".banner-hero-clip")
+            ?.classList.remove("banner-hero-clip");
+          document.querySelectorAll(".anim-clip-circle").forEach((el) => {
+            el.classList.remove("anim-clip-circle");
+          });
+          document.querySelector(".banner-title").classList.add("d-none");
+          document.getElementById("header").classList.remove("hide-header");
+          classesRemoved = true;
+        }
+      },
+      onLeave: (self) => {
+        let start = self.start;
+        console.log(start);
+
+        self.scroll(self.start);
+        self.disable();
+
+        // add true
+        self.animation.progress(1, true);
+        ScrollTrigger.refresh();
+        window.scrollTo(0, start);
+      }
+    }
+  });
+
+  tl.to(".anim-clip-circle", {
+    clipPath: "circle(70.7% at 50% 50%)"
+  }).to(
+    ".banner-container img",
+    {
+      scale: 1
+    },
+    0
+  );
+}
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
@@ -471,21 +320,13 @@ const init = () => {
   ctaMess();
   distortionImg();
   swiperAccommodation();
+  loadingBanner();
 };
 preloadImages("img").then(() => {
+  // Once images are preloaded, remove the 'loading' indicator/class from the body
+
   init();
 });
-
-let isLinkClicked = false;
-$("a").on("click", function (e) {
-  if (this.href && !this.href.match(/^#/) && !this.href.match(/^javascript:/)) {
-    isLinkClicked = true;
-  }
-});
-
 $(window).on("beforeunload", function () {
-  if (!isLinkClicked) {
-    $(window).scrollTop(0);
-  }
-  isLinkClicked = false;
+  $(window).scrollTop(0);
 });
