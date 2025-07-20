@@ -19,6 +19,8 @@
       transform: translateX(0);
       max-width: calc(6 / 12 * 100%);
       width: 100%;
+      top: unset;
+      text-align: left;
       @media (max-width: 991px) {
         font-size: 28px;
         line-height: 32px;
@@ -28,8 +30,6 @@
         right: 50px;
         text-align: center;
       }
-      top: unset;
-      text-align: left;
     }
   }
   &-container {

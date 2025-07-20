@@ -1,4 +1,8 @@
 import { preloadImages } from "../../libs/utils.js";
+
+("use strict");
+$ = jQuery;
+
 // setup lenis
 const lenis = new Lenis();
 lenis.on("scroll", ScrollTrigger.update);
@@ -134,9 +138,11 @@ function sectionAccommodation() {
 
     const isOffer = $slider.hasClass("offer-slider");
 
+    let slidePerView = $(window).width() > 767 ? (isOffer ? 2.5 : 3.3) : 1.2;
+
     new Swiper($slider[0], {
       spaceBetween: 40,
-      slidesPerView: isOffer ? 2.5 : 3.3,
+      slidesPerView: slidePerView,
       speed: 1000,
       slidesOffsetAfter: 80,
       pagination: {
@@ -263,8 +269,8 @@ function distortionImg() {
 }
 function loadingBanner() {
   let classesRemoved = false; // Biến để đảm bảo class chỉ xóa một lần
-  let lastScroll = 0;
-  var heightHero = $(".hero-sec").height();
+  if ($(".banner-hero-clip").length < 1) return;
+
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".banner-hero-clip",
