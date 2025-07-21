@@ -101,7 +101,7 @@ function bookingForm() {
         calendar.style.top = rect.bottom + window.scrollY + "px";
         calendar.style.left = rect.left + window.scrollX + "px";
       }
-    }
+    },
   });
 
   // Counter functionality
@@ -147,12 +147,12 @@ function sectionAccommodation() {
       slidesOffsetAfter: 80,
       pagination: {
         el: $pagination[0],
-        type: "progressbar"
+        type: "progressbar",
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0]
-      }
+        nextEl: $next[0],
+      },
     });
   });
 }
@@ -165,10 +165,10 @@ function swiperFacility() {
     speed: 1500,
     loop: true,
     autoplay: {
-      delay: 3000
+      delay: 3000,
     },
     pagination: {
-      el: ".swiper-facility .swiper-pagination"
+      el: ".swiper-facility .swiper-pagination",
     },
     on: {
       progress(swiper) {
@@ -199,8 +199,8 @@ function swiperFacility() {
             slideInner.style.transition = `${speed}ms ${easing}`;
           }
         });
-      }
-    }
+      },
+    },
   });
 }
 
@@ -235,12 +235,12 @@ function swiperAccommodation() {
       parallax: true,
       pagination: {
         el: $pagination[0],
-        type: "progressbar"
+        type: "progressbar",
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0]
-      }
+        nextEl: $next[0],
+      },
     });
 
     // Handle modal gallery slider
@@ -272,17 +272,17 @@ function swiperAccommodation() {
         // centeredSlides: true,
         pagination: {
           el: $paginationG[0],
-          type: "progressbar"
+          type: "progressbar",
         },
         navigation: {
           prevEl: $prevG[0],
-          nextEl: $nextG[0]
+          nextEl: $nextG[0],
         },
         breakpoints: {
           991: {
             spaceBetween: 40,
-            slidesPerView: "auto"
-          }
+            slidesPerView: "auto",
+          },
         },
         on: {
           slideChange: function () {
@@ -294,8 +294,8 @@ function swiperAccommodation() {
           init: function () {
             // Reveal Swiper after initialization
             $gallery.removeClass("swiper-hidden").addClass("swiper-visible");
-          }
-        }
+          },
+        },
       });
     }
   });
@@ -310,7 +310,7 @@ function ctaMess() {
       self.direction === 1
         ? $("#cta-mess").addClass("hide")
         : $("#cta-mess").removeClass("hide");
-    }
+    },
   });
 }
 function distortionImg() {
@@ -328,7 +328,7 @@ function distortionImg() {
         angle: 0,
         image1: imageSrc,
         image2: imageSrc,
-        displacementImage: "./assets/images/distortion/ripple.jpg"
+        displacementImage: "./assets/images/distortion/ripple.jpg",
       });
     }
   });
@@ -372,21 +372,66 @@ function loadingBanner() {
         self.animation.progress(1, true);
         ScrollTrigger.refresh();
         window.scrollTo(0, start);
-      }
-    }
+      },
+    },
   });
 
   tl.to(".anim-clip-circle", {
-    clipPath: "circle(70.7% at 50% 50%)"
+    clipPath: "circle(70.7% at 50% 50%)",
   }).to(
     ".banner-container img",
     {
-      scale: 1
+      scale: 1,
     },
     0
   );
 }
+function filterGalleryMobile() {
+  const filterContainer = document.querySelector(".filter-mobile");
+  if (!filterContainer) return;
 
+  const filterValue = filterContainer.querySelector(".filter-value-select");
+  const filterHead = filterContainer.querySelector(".filter-head");
+  const filterBody = filterContainer.querySelector(".filter-body");
+  const filterButtons = filterBody.querySelectorAll(".nav-link");
+
+  if (!filterValue || !filterHead || !filterBody || filterButtons.length === 0)
+    return;
+
+  // Toggle filter list visibility
+  filterValue.addEventListener("click", () => {
+    filterHead.classList.toggle("active");
+    filterBody.classList.toggle("active");
+  });
+
+  // Handle option click
+  filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const titleEl = btn.querySelector(".title-tab");
+      console.log(titleEl);
+
+      if (!titleEl) return;
+
+      const selectedText = titleEl.textContent.trim();
+      filterValue.textContent = selectedText;
+
+      // Close dropdown
+      filterHead.classList.remove("active");
+      filterBody.classList.remove("active");
+    });
+  });
+}
+
+function header() {
+  // toggle active icon menu
+  const hamburger = document.getElementById("hamburger");
+  const subMenu = document.getElementById("header-sub-menu");
+
+  hamburger.addEventListener("click", function () {
+    this.classList.toggle("active");
+    subMenu.classList.toggle("active");
+  });
+}
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
@@ -397,6 +442,8 @@ const init = () => {
   distortionImg();
   swiperAccommodation();
   loadingBanner();
+  filterGalleryMobile();
+  header();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body
